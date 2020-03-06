@@ -13,7 +13,6 @@ seaborn = "*"
 geopandas = "*"
 matplotlib = "*"
 jinja2 = "*"
-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
