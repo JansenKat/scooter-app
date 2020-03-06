@@ -44,3 +44,13 @@ def nowhere():
 def red_zone():
     #  red zone zip code (10 worst neighbor hoods to leave scooter in)
     return render_template("index.html")
+
+@app.route("/api/")
+def api():
+    # return json api based on parameters from url
+    return render_template("index.html")
+
+@app.route("/api_docs")
+def api_docs():
+    # Documentation for API
+    return render_template("index.html")
