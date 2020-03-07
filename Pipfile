@@ -13,6 +13,7 @@ seaborn = "*"
 geopandas = "*"
 matplotlib = "*"
 jinja2 = "*"
+fastapi = "*"
 
 [requires]
 python_version = "3.7"
