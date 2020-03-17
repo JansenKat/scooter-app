@@ -15,6 +15,7 @@ matplotlib = "*"
 jinja2 = "*"
 fastapi = "*"
 uvicorn = "*"
+pymysql = "*"
 
 [requires]
 python_version = "3.7"
