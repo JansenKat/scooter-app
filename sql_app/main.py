@@ -2,11 +2,12 @@ from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.orm import Session
 
-from . import models, schemas
+from . import crud, models, schemas
 from .database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
@@ -20,13 +21,13 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],
-#     allow_methods=
-#     allow_headers=
-#     allow_credentials=True
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True
+)
 
 # Dependency
 def get_db():
@@ -39,7 +40,7 @@ def get_db():
 @app.get("/")
 async def home():
     # list of links to other routes
-    return templates.TemplateResponse("index.html")
+    return {"Hello":"World"} #templates.TemplateResponse("index.html")
 
 # @app.get("/random")
 # def generate_scooter():
@@ -73,15 +74,15 @@ async def home():
 
 
 #API Routes
-@app.get("/complaints/", response_model=List[schemas.Complaint])
+@app.get("/complaints", response_model=List[schemas.Complaint])
 def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_complaints(db, skip=skip, limit=limit)
-    return users
+    complaints = crud.get_complaints(db, skip=skip, limit=limit)
+    return complaints
 
-@app.get("/scooter_trips/", response_model=List[schemas.Trip])
+@app.get("/scooter_trips", response_model=List[schemas.Trip])
 def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    items = crud.get_trips(db, skip=skip, limit=limit)
-    return items
+    trips = crud.get_trips(db, skip=skip, limit=limit)
+    return trips
 
 # @app.get("/api_docs")
 # def api_docs():
