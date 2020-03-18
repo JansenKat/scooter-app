@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4094a88a84d83eee4f9a88d68e9ff255c67e83892331f9a8f3b582608fe1157e"
+            "sha256": "689a0254e2da7db94147e01ecdb607fad86eaf961a1d7d3347d4b55e809c5127"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -75,6 +75,13 @@
                 "sha256:c6e99bf596c2322e134833490611a612a8cce35a39c4c6499b7df919e24b482b"
             ],
             "version": "==1.8.13.post1"
+        },
+        "gdal": {
+            "hashes": [
+                "sha256:a17eaa6872e4b7f7fa82f86aeccecc57d224bd054952a56db64368ecaf18509c"
+            ],
+            "index": "pypi",
+            "version": "==3.0.4"
         },
         "geopandas": {
             "hashes": [
