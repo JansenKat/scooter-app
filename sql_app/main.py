@@ -1,8 +1,8 @@
 from typing import List
 
-from fastapi import Depends, FastAPI, HTTPException
-from fastapi.staticfiles import StaticFiles
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.orm import Session
@@ -19,6 +19,7 @@ import random
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 app.add_middleware(
@@ -38,9 +39,9 @@ def get_db():
         db.close()
 
 @app.get("/")
-async def home():
+async def home(request: Request):
     # list of links to other routes
-    return {"Hello":"World"} #templates.TemplateResponse("index.html")
+    return templates.TemplateResponse("index.html",{"request": request})
 
 # @app.get("/random")
 # def generate_scooter():
