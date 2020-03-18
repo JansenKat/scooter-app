@@ -1,5 +1,4 @@
 from typing import List
-from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 
 class Complaint(BaseModel):
@@ -9,10 +8,10 @@ class Complaint(BaseModel):
     owning_dept : str
     method_received : str
     sr_status : str
-    status_change_date : datetime
-    created_date : datetime
-    last_update_date : datetime
-    close_date : datetime
+    status_change_date : str
+    created_date : str
+    last_update_date : str
+    close_date : str
     sr_location : str
     street_number : str
     street_name : str
@@ -27,9 +26,9 @@ class Complaint(BaseModel):
     council_district : str
     map_page : str
     map_tile : str
-
+    
     class Config:
-        orm_mode : True
+            orm_mode = True
 
 class Trip(BaseModel):
     trip_id : str
@@ -39,12 +38,12 @@ class Trip(BaseModel):
     trip_distance : int
     start_time : str
     end_time : str
-    modified_date : datetime
+    modified_date : str
     council_dist_start : str
     council_dist_end : str
     year : int
     census_tract_start : str
     census_tract_end : str
-
+    
     class Config:
-        orm_mode : True
+            orm_mode = True
