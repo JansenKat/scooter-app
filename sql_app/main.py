@@ -46,32 +46,32 @@ async def home(request: Request):
 # @app.get("/random")
 # def generate_scooter():
 #     # generate random # - display scooter ride
-#     return render_template("index.html")
+#     return templates.TemplateResponse("index.html",{"request": request})
 
 # @app.get("/difference")
 # def zipcode_vs_census():
 #     # 2 addresses same zipcode, diff census track, how the data differs
-#     return render_template("index.html")
+#     return templates.TemplateResponse("index.html",{"request": request})
 
 # @app.get("/{zipcode}")
 # def zip_stats():
 #     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
-#     return render_template("index.html")
+#     return templates.TemplateResponse("index.html",{"request": request})
 
 # @app.get("/long")
 # def longest():
 #     # display longest ride distance/time
-#     return render_template("index.html")
+#     return templates.TemplateResponse("index.html",{"request": request})
 
 # @app.get("/nowhere")
 # def nowhere():
 #     # rides that go nowhere, some plots on this. where/when
-#     return render_template("index.html")
+#     return templates.TemplateResponse("index.html",{"request": request})
 
 # @app.get("/red_zone")
 # def red_zone():
 #     #  red zone zip code (10 worst neighbor hoods to leave scooter in)
-#     return render_template("index.html")
+#     return templates.TemplateResponse("index.html",{"request": request})
 
 
 #API Routes
@@ -84,11 +84,6 @@ def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
 def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     trips = crud.get_trips(db, skip=skip, limit=limit)
     return trips
-
-# @app.get("/api_docs")
-# def api_docs():
-#     # Documentation for API
-#     return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
