@@ -16,6 +16,7 @@ jinja2 = "*"
 fastapi = "*"
 uvicorn = "*"
 pymysql = "*"
+sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
