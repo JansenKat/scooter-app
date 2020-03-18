@@ -3,8 +3,8 @@ from sqlalchemy.types import DateTime
 
 from .database import Base
 
-class Complaint(Base, DictMixIn):
-    __tablename__ = "users"
+class Complaint(Base):
+    __tablename__ = "311_data"
 
     sr_number = Column(String, primary_key=True, index=True)
     sr_type_code = Column(String)
@@ -31,8 +31,8 @@ class Complaint(Base, DictMixIn):
     map_page = Column(String)
     map_tile = Column(String)
 
-class Trip(Base, DictMixIn):
-    __tablename__ = "items"
+class Trip(Base):
+    __tablename__ = "scooter_data"
 
     trip_id = Column(String, primary_key=True, index=True)
     vehicle_id = Column(String)

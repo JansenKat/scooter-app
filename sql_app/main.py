@@ -73,13 +73,13 @@ async def home():
 
 
 #API Routes
-@app.get("/complaints/", response_model=List[schemas.User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+@app.get("/complaints/", response_model=List[schemas.Complaint])
+def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_complaints(db, skip=skip, limit=limit)
     return users
 
-@app.get("/scooter_trips/", response_model=List[schemas.Item])
-def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+@app.get("/scooter_trips/", response_model=List[schemas.Trip])
+def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_trips(db, skip=skip, limit=limit)
     return items
 
