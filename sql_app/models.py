@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, Float, String
-from sqlalchemy.types import DateTime
+from sqlalchemy.types import String
 
 from .database import Base
 
@@ -12,10 +12,10 @@ class Complaint(Base):
     owning_dept = Column(String)
     method_received = Column(String)
     sr_status = Column(String)
-    status_change_date = Column(DateTime)
-    created_date = Column(DateTime)
-    last_update_date = Column(DateTime)
-    close_date = Column(DateTime)
+    status_change_date = Column(String)
+    created_date = Column(String)
+    last_update_date = Column(String)
+    close_date = Column(String)
     sr_location = Column(String)
     street_number = Column(String)
     street_name = Column(String)
