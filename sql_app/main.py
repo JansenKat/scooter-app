@@ -1,0 +1,89 @@
+from typing import List
+
+from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
+from sqlalchemy.orm import Session
+
+from . import crud, models, schemas
+from .database import SessionLocal, engine
+
+models.Base.metadata.create_all(bind=engine)
+
+import datetime as dt
+import numpy as np
+import random
+
+models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True
+)
+
+# Dependency
+def get_db():
+    try:
+        db = SessionLocal()
+        yield db
+    finally:
+        db.close()
+
+@app.get("/")
+async def home(request: Request):
+    # list of links to other routes
+    return templates.TemplateResponse("index.html",{"request": request})
+
+# @app.get("/random")
+# def generate_scooter():
+#     # generate random # - display scooter ride
+#     return templates.TemplateResponse("index.html",{"request": request})
+
+# @app.get("/difference")
+# def zipcode_vs_census():
+#     # 2 addresses same zipcode, diff census track, how the data differs
+#     return templates.TemplateResponse("index.html",{"request": request})
+
+# @app.get("/{zipcode}")
+# def zip_stats():
+#     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
+#     return templates.TemplateResponse("index.html",{"request": request})
+
+# @app.get("/long")
+# def longest():
+#     # display longest ride distance/time
+#     return templates.TemplateResponse("index.html",{"request": request})
+
+# @app.get("/nowhere")
+# def nowhere():
+#     # rides that go nowhere, some plots on this. where/when
+#     return templates.TemplateResponse("index.html",{"request": request})
+
+# @app.get("/red_zone")
+# def red_zone():
+#     #  red zone zip code (10 worst neighbor hoods to leave scooter in)
+#     return templates.TemplateResponse("index.html",{"request": request})
+
+
+#API Routes
+@app.get("/complaints", response_model=List[schemas.Complaint])
+def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    complaints = crud.get_complaints(db, skip=skip, limit=limit)
+    return complaints
+
+@app.get("/scooter_trips", response_model=List[schemas.Trip])
+def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    trips = crud.get_trips(db, skip=skip, limit=limit)
+    return trips
+
+if __name__ == "__main__":
+    app.run(debug=True)
