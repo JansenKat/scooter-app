@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 cloud_sql_proxy
+.DS_Store
