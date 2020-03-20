@@ -1,4 +1,6 @@
 Plotly.d3.csv('311data.csv', function(err, rows){
+  // Plotly.d3.json('txzips.json', function(err, rows){
+
 
   var classArray = unpack(rows, 'class');
   var classes = [...new Set(classArray)];
@@ -60,10 +62,6 @@ Plotly.d3.csv('311data.csv', function(err, rows){
 		 showarrow: false
 	 }]
   };
-
-  Plotly.setPlotConfig({
-    mapboxAccessToken:"pk.eyJ1IjoiZXJpbmJlbnRsZXkiLCJhIjoiY2s3djN5YzNvMDcxMTNlcnl0NWljd21rMiJ9.nNWqZ59pebYdqsr6VR3qfQ"
-  });
 
   Plotly.newPlot('myDiv', data, layout);
 });
