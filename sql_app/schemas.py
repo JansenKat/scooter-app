@@ -47,3 +47,11 @@ class Trip(BaseModel):
     
     class Config:
             orm_mode = True
+            
+class ZipCode(BaseModel):
+    census_tract : str
+    zip_code : str
+    population : int
+
+    class Config:
+            orm_mode = True

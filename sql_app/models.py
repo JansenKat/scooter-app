@@ -47,4 +47,11 @@ class Trip(Base):
     year = Column(Integer)
     census_tract_start = Column(String)
     census_tract_end = Column(String)
+    
+class ZipCode(BaseModel):
+    __tablename__ = "scooter_data"
+
+    census_tract = Column(String, primary_key=True, index=True)
+    zip_code = Column(String)
+    population = Column(Integer)
 
