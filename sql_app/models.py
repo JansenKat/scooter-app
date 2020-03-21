@@ -48,8 +48,8 @@ class Trip(Base):
     census_tract_start = Column(String)
     census_tract_end = Column(String)
     
-class ZipCode(BaseModel):
-    __tablename__ = "scooter_data"
+class ZipCode(Base):
+    __tablename__ = "tract_to_zip"
 
     census_tract = Column(String, primary_key=True, index=True)
     zip_code = Column(String)
