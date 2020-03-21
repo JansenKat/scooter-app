@@ -67,7 +67,7 @@ def zipcode_vs_census(request: Request):
 @app.get("/{zipcode}")
 def zip_stats(zipcode, request: Request):
     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
-    return templates.TemplateResponse("index.html",{"request": request})
+    return templates.TemplateResponse("index.html",{"request": request, "zipcode": zipcode})
 
 @app.get("/long")
 def longest(request: Request):
