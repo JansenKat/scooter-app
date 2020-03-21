@@ -34,8 +34,8 @@ class Trip(BaseModel):
     trip_id : str
     vehicle_id : str
     vehicle_type : str
-    trip_duration : int
-    trip_distance : int
+    trip_duration : float
+    trip_distance : float
     start_time : str
     end_time : str
     modified_date : str
