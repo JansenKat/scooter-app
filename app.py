@@ -6,7 +6,8 @@ import numpy as np
 import random
 
 
-app = Flask(__name__)
+app = Flask(__name__) 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Resources/hawaii.sqlite"
 db = SQLAlchemy(app)
 
