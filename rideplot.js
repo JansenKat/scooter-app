@@ -10,11 +10,11 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
     var count = unpack(rows, 'cnt');
     console.log(count)
     console.log(rows)
-    var startLongitude = unpack(rows, 'startlon');
-    var endLongitude = startLongitude;
+    var startLongitude = unpack(rows, 'starting cordinates');
+    var endLongitude = unpack(rows, 'ending cordinates')
     var startLat = unpack(rows, 'starting cordinates');
-    var endLat = unpack(rows, 'endlat');
-    console.log("end lat" + endLat);
+    var endLat = unpack(rows, 'ending cordinates');
+    console.log("ending cordinates" + endLat);
     console.log("starting cordinates" + startLat);
     console.log("start long" + startLongitude);
   
@@ -44,10 +44,10 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
       geo:{
           scope: 'austin, texas',
               lataxis: {
-        range: [ 25, 35 ],
+        range: [ 15, 25 ],
       },
       lonaxis:{
-        range: [-100, -90],
+        range: [-100, 60],
       },
           showsubunits: true,
           showland: true,
