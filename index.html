@@ -1,6 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ​
-    <title>Hello, world!</title>
+    <title>Longest Ride</title>
   </head>
   <body>
     <div id="myDiv"></div>
@@ -20,6 +23,70 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="rideplot.js" ></script>
+    <script src="rideplot.js" ></script> 
   </body>
-</html>
+</html> 
+<!-- <script>
+Plotly.d3.csv('final_copy.csv', function(err, rows){
+    function unpack(rows, key) {
+        return rows.map(function(row) { return row[key]; });}
+
+    function getMaxOfArray(numArray) {
+        return Math.max.apply(null, numArray);
+    }
+
+    var data = [];
+    var count = unpack(rows, 'cnt');
+    var startLongitude = unpack(rows, 'startlon');
+    var endLongitude = startLongitude;
+    var startLat = unpack(rows, 'startlat');
+    var endLat = unpack(rows, 'endlat');
+    console.log("end lat" + endLat);
+    console.log("start lat" + startLat);
+    console.log("start long" + startLongitude);
+  
+    console.log("end long" + endLongitude);
+    for ( var i = 0 ; i < count.length; i++ ) {
+        var opacityValue = count[i]/getMaxOfArray(count);
+
+        var result = {
+            type: 'scattergeo',
+            locationmode: 'usa',
+            projection: 'albers usa',
+            lon: [ endLongitude[i]-5 , startLongitude[i] +2],
+            lat: [ startLat[i]+5 , endLat[i]-2],
+            mode: 'lines+markers',
+            line: {
+                width: 10,
+                color: 'red'
+            },
+            opacity: opacityValue
+        }
+        data.push(result);
+    };
+
+  var layout = {
+      title: 'Longest Ride',
+      showlegend: false,
+      geo:{
+          scope: 'north america',
+              lataxis: {
+        range: [ 25, 35 ],
+      },
+      lonaxis:{
+        range: [-100, -90],
+      },
+          showsubunits: true,
+          showland: true,
+          showlakes: true,
+        showrivers: true
+      }
+  };
+
+
+    Plotly.newPlot("myDiv", data, layout, {showLink: false});
+
+});
+</script>
+  </body>
+</html> --> 

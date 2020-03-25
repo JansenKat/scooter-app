@@ -1,41 +1,64 @@
-var data = [{
-  type: 'scattergeo',
-  lat: [ 40.7127, 51.5072 ],
-  lon: [ -74.0059, 0.1275 ],
-  mode: 'lines',
-  line:{
-      width: 2,
-      color: 'blue'
-  }
-}];
+Plotly.d3.csv('final_copy.csv', function(err, rows){
+    function unpack(rows, key) {
+        return rows.map(function(row) { return row[key]; });}
 
-var layout = {
-title: 'London to NYC Great Circle',
-showlegend: false,
-geo: {
-    resolution: 50,
-    showland: true,
-    showlakes: true,
-    landcolor: 'rgb(204, 204, 204)',
-    countrycolor: 'rgb(204, 204, 204)',
-    lakecolor: 'rgb(255, 255, 255)',
-    projection: {
-      type: 'equirectangular'
-    },
-    coastlinewidth: 2,
-    lataxis: {
-      range: [ 20, 60 ],
-      showgrid: true,
-      tickmode: 'linear',
-      dtick: 10
-    },
-    lonaxis:{
-      range: [-100, 20],
-      showgrid: true,
-      tickmode: 'linear',
-      dtick: 20
+    function getMaxOfArray(numArray) {
+        return Math.max.apply(null, numArray);
     }
-  }
-};
 
-Plotly.newPlot('myDiv', data, layout);
+    var data = [];
+    var count = unpack(rows, 'cnt');
+    console.log(count)
+    console.log(rows)
+    var startLongitude = unpack(rows, 'startlon');
+    var endLongitude = startLongitude;
+    var startLat = unpack(rows, 'starting cordinates');
+    var endLat = unpack(rows, 'endlat');
+    console.log("end lat" + endLat);
+    console.log("starting cordinates" + startLat);
+    console.log("start long" + startLongitude);
+  
+    console.log("end long" + endLongitude);
+    for ( var i = 0 ; i < count.length; i++ ) {
+        var opacityValue = count[i]/getMaxOfArray(count);
+
+        var result = {
+            type: 'scattergeo',
+            locationmode: 'https://data.austintexas.gov/api/views/cb9m-wucg/rows.json?accessType=DOWNLOAD',
+            projection: 'albers usa',
+            lon: [ endLongitude[i] , startLongitude[i]],
+            lat: [ startLat[i] , endLat[i]],
+            mode: 'lines+markers',
+            line: {
+                width: 10,
+                color: 'red'
+            },
+            opacity: opacityValue
+        }
+        data.push(result);
+    };
+
+  var layout = {
+      title: 'Longest Ride',
+      showlegend: true,
+      geo:{
+          scope: 'austin, texas',
+              lataxis: {
+        range: [ 25, 35 ],
+      },
+      lonaxis:{
+        range: [-100, -90],
+      },
+          showsubunits: true,
+          showland: true,
+          showlakes: true,
+        showrivers: true
+      }
+  };
+
+
+    Plotly.newPlot("myDiv", data, layout, {showLink: false});
+
+});
+
+
