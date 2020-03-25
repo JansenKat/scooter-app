@@ -10,10 +10,10 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
     var count = unpack(rows, 'cnt');
     console.log(count)
     console.log(rows)
-    var startLongitude = unpack(rows, 'starting cordinates');
-    var endLongitude = unpack(rows, 'ending cordinates')
-    var startLat = unpack(rows, 'starting cordinates');
-    var endLat = unpack(rows, 'ending cordinates');
+    var startLongitude = unpack(rows, 'startLon');
+    var endLongitude = unpack(rows, 'endLon')
+    var startLat = unpack(rows, 'startLat');
+    var endLat = unpack(rows, 'endLat');
     console.log("ending cordinates" + endLat);
     console.log("starting cordinates" + startLat);
     console.log("start long" + startLongitude);
@@ -23,8 +23,8 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
         var opacityValue = count[i]/getMaxOfArray(count);
 
         var result = {
-            type: 'scattergeo',
-            locationmode: 'https://data.austintexas.gov/api/views/cb9m-wucg/rows.json?accessType=DOWNLOAD',
+            type: 'scattermapbox',
+            locationmode: 'USA-states',
             projection: 'albers usa',
             lon: [ endLongitude[i] , startLongitude[i]],
             lat: [ startLat[i] , endLat[i]],
@@ -38,24 +38,41 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
         data.push(result);
     };
 
-  var layout = {
-      title: 'Longest Ride',
-      showlegend: true,
-      geo:{
-          scope: 'austin, texas',
-              lataxis: {
-        range: [ 15, 25 ],
-      },
-      lonaxis:{
-        range: [-100, 60],
-      },
-          showsubunits: true,
-          showland: true,
-          showlakes: true,
-        showrivers: true
-      }
-  };
+  // var layout = {
+  //     title: 'Longest Ride',
+  //     showlegend: true,
+  //     geo:{
+  //         scope: 'texas',
+  //             lataxis: {
+  //       range: [ 25, 35 ],
+  //     },
+  //     lonaxis:{
+  //       range: [-100, -90],
+  //     },
+  //         showsubunits: true,
+  //         showland: true,
+  //         showlakes: true,
+  //       showrivers: true
+  //     }
+      
+  // };
 
+  var layout = {
+    dragmode: "zoom",
+    mapbox: {
+      style: "white-bg",
+      layers: [
+        {
+          sourcetype: "raster",
+          source: ["https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"],
+          below: "traces"
+        }
+      ],
+      center: { lat: 30.2280314, lon: -97.7734004 },
+      zoom: 10
+    },
+    margin: { r: 0, t: 0, b: 0, l: 0 }
+  };
 
     Plotly.newPlot("myDiv", data, layout, {showLink: false});
 
