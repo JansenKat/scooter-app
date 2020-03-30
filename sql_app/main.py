@@ -64,17 +64,11 @@ def generate_scooter(request: Request):
     return templates.TemplateResponse("random.html", {"request": request})
 
 
-@app.get("/difference")
-def zipcode_vs_census(request: Request):
-    # 2 addresses same zipcode, diff census track, how the data differs
-    return templates.TemplateResponse("difference.html", {"request": request})
-
-
-@app.get("/{zipcode}")
+@app.get("/zipcode/{zipcode}")
 def zip_stats(zipcode, request: Request):
     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
     return templates.TemplateResponse(
-        "index.html", {"request": request, "zipcode": zipcode}
+        "zipcode.html", {"request": request, "zipcode": zipcode}
     )
 
 

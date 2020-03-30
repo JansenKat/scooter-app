@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
+    <link rel="icon" href="./static/scooter-favicon.ico">
 
     <title>Scooters in Austin, TX - Dashboard</title>
 
@@ -27,6 +27,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', path='/dashboard.css') }}" rel="stylesheet">
+    <!-- Plotly CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -47,74 +49,75 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">
+                            <a class="nav-link active" href="/">
                                 <span data-feather="home"></span>
-                                Home <span class="sr-only">(current)</span>
+                                Home <span class="sr-only"></span>
                             </a>
                         </li>
+                        <h6
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Raw Data and Documentation</span>
+                            <a class="d-flex align-items-center text-muted" href="#">
+                            </a>
+                        </h6>
                         <li class="nav-item">
-                            <a class="nav-link" href="api.html">
+                            <a class="nav-link" href="docs" target="_blank">
                                 <span data-feather="file"></span>
-                                API <span class="sr-only">(current)</span>
+                                API Documentation<span class="sr-only"></span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="complaints.html">
+                            <a class="nav-link" href="complaints" target="_blank">
                                 <span data-feather="bar-chart-2"></span>
-                                Complaints <span class="sr-only">(current)</span>
+                                Complaints <span class="sr-only"></span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="difference.html">
-                                <span data-feather="users"></span>
-                                Difference
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="long.html">
-                                <span data-feather="bar-chart"></span>
-                                Long
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="nowhere.html">
-                                <span data-feather="layers"></span>
-                                Nowhere
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="random.html">
-                                <span data-feather="bar-chart-2"></span>
-                                Random <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="red-zone.html">
-                                <span data-feather="layers"></span>
-                                Red Zone
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="scooter-trips.html">
+                            <a class="nav-link" href="scooter_trips" target="_blank">
                                 <span data-feather="layers"></span>
                                 Scooter Trips
                             </a>
                         </li>
+                        <h6
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Plots</span>
+                            <a class="d-flex align-items-center text-muted" href="#">
+                            </a>
+                        </h6>
                         <li class="nav-item">
-                            <a class="nav-link" href="zipcode.html">
+                            <a class="nav-link" href="long">
+                                <span data-feather="bar-chart"></span>
+                                Long <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nowhere">
+                                <span data-feather="bar-chart-2"></span>
+                                Nowhere <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="random">
+                                <span data-feather="bar-chart-2"></span>
+                                Random <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="red_zone">
                                 <span data-feather="layers"></span>
-                                Zip Code
+                                Red Zone <span class="sr-only"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="zipcode/">
+                                <span data-feather="layers"></span>
+                                Zip Code <span class="sr-only"></span>
                             </a>
                         </li>
                     </ul>
 
-                    <!-- <h6
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
-                        <a class="d-flex align-items-center text-muted" href="#">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6> -->
+
                     <!-- <ul class="nav flex-column mb-2">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -144,6 +147,11 @@
 
                 </div>
             </nav>
+            <!-- Icons -->
+            <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+            <script>
+                feather.replace()
+            </script>
             {% block body %}
             {% endblock %}
 
