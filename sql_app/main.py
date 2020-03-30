@@ -27,7 +27,7 @@ app.add_middleware(
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
-    allow_credentials=True
+    allow_credentials=True,
 )
 
 # Dependency
@@ -38,51 +38,56 @@ def get_db():
     finally:
         db.close()
 
+
 @app.get("/")
 async def home(request: Request):
     # list of links to other routes
-    return templates.TemplateResponse("index.html",{"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
 
-#API Routes
+
+# API Routes
 @app.get("/complaints", response_model=List[schemas.Complaint])
 def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     complaints = crud.get_complaints(db, skip=skip, limit=limit)
     return complaints
+
 
 @app.get("/scooter_trips", response_model=List[schemas.Trip])
 def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     trips = crud.get_trips(db, skip=skip, limit=limit)
     return trips
 
+
 @app.get("/random")
 def generate_scooter(request: Request):
     # generate random # - display scooter ride
-    return templates.TemplateResponse("index.html",{"request": request})
+    return templates.TemplateResponse("random.html", {"request": request})
 
-@app.get("/difference")
-def zipcode_vs_census(request: Request):
-    # 2 addresses same zipcode, diff census track, how the data differs
-    return templates.TemplateResponse("index.html",{"request": request})
 
-@app.get("/{zipcode}")
+@app.get("/zipcode/{zipcode}")
 def zip_stats(zipcode, request: Request):
     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
-    return templates.TemplateResponse("index.html",{"request": request, "zipcode": zipcode})
+    return templates.TemplateResponse(
+        "zipcode.html", {"request": request, "zipcode": zipcode}
+    )
+
 
 @app.get("/long")
 def longest(request: Request):
     # display longest ride distance/time
-    return templates.TemplateResponse("index.html",{"request": request})
+    return templates.TemplateResponse("long.html", {"request": request})
+
 
 @app.get("/nowhere")
 def nowhere(request: Request):
     # rides that go nowhere, some plots on this. where/when
-    return templates.TemplateResponse("index.html",{"request": request})
+    return templates.TemplateResponse("nowhere.html", {"request": request})
+
 
 @app.get("/red_zone")
 def red_zone(request: Request):
     #  red zone zip code (10 worst neighbor hoods to leave scooter in)
-    return templates.TemplateResponse("index.html",{"request": request})
+    return templates.TemplateResponse("red-zone.html", {"request": request})
 
 
 # if __name__ == "__main__":
