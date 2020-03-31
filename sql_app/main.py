@@ -52,10 +52,13 @@ def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
     return complaints
 
 
+
 @app.get("/queries")
 def read_queries(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     queries = crud.get_queries(db, skip=skip, limit=limit)
     return queries
+
+
 
 
 @app.get("/scooter_trips", response_model=List[schemas.Trip])
@@ -70,30 +73,30 @@ def generate_scooter(skip: int = 0, limit: int = 100, db: Session = Depends(get_
     return random
 
 
-@app.get("/{zipcode}")
+@app.get("/zipcode/{zipcode}")
 def zip_stats(zipcode, request: Request):
     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
     return templates.TemplateResponse(
-        "index.html", {"request": request, "zipcode": zipcode}
+        "zipcode.html", {"request": request, "zipcode": zipcode}
     )
 
 
 @app.get("/long")
 def longest(request: Request):
     # display longest ride distance/time
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("long.html", {"request": request})
 
 
 @app.get("/nowhere")
 def nowhere(request: Request):
     # rides that go nowhere, some plots on this. where/when
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("nowhere.html", {"request": request})
 
 
 @app.get("/red_zone")
 def red_zone(request: Request):
     #  red zone zip code (10 worst neighbor hoods to leave scooter in)
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("red-zone.html", {"request": request})
 
 
 # if __name__ == "__main__":
