@@ -1,8 +1,111 @@
 {% extends "layout.html" %}
-
 {% block body %}
-<h1>This is the Home Page</h1>
-<h2>This is the Home Page</h2>
-<h3>This is the Home Page</h3>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Scooters in Austin, TX</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/" target="_blank"
+                    data-mce-target="_blank">
+                    <button class="btn btn-sm btn-outline-secondary">Share</button>
+                </a>
+            </div>
+        </div>
+    </div>
 
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Explore the data!</h1>
+                <!-- -------------- Insert Intro Blubr Here --------------- -->
+                <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                    Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                    hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+                </p>
+                <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                    Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                    hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+                </p>
+                <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                    Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                    hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+                </p>
+                <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                    Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor...
+                </p>
+            </div>
+            <div class="col">
+                <img src='./static/austin-scooter.jpg' alt="Scooters in Austin">
+            </div>
+        </div>
+        <div class="row">
+            <h4> Plot Title</h4>
+            <!-- -------------- Insert a plot here --------------- -->
+            <div id="tester" style="width:100%;height:100%;"></div>
+            <!-- -------------- ------------------ --------------- -->
+            <h3>Here is another title placeholder</h3>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+            <!-- -------------- Insert a plot here --------------- -->
+            <div id="tester2" style="width:100%;height:100%;"></div>
+            <!-- -------------- ------------------ --------------- -->
+
+            <h4> Scooters in Austin</h4>
+            <h3> Another title placeholder</h3>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+            <!-- -------------- Insert a plot here --------------- -->
+            <div id="tester3" style="width:100%;height:100%;"></div>
+            <!-- -------------- ------------------ --------------- -->
+        </div>
+    </div>
+</main>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Plots -->
+<script>
+    TESTER = document.getElementById('tester');
+    Plotly.newPlot(TESTER, [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16]
+    }], {
+        margin: { t: 0 }
+    });
+</script>
+<script>
+    TESTER = document.getElementById('tester2');
+    Plotly.newPlot(TESTER, [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16]
+    }], {
+        margin: { t: 0 }
+    });
+</script>
+<script>
+    TESTER = document.getElementById('tester3');
+    Plotly.newPlot(TESTER, [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16]
+    }], {
+        margin: { t: 0 }
+    });
+</script>
 {% endblock %}

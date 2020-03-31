@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <!-- Insert title here -->
+        <h1 class="h2">Explore a NOWHERE Route!</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/" target="_blank"
+                    data-mce-target="_blank">
+                    <button class="btn btn-sm btn-outline-secondary">Share</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>This is the Nowhere Route Austin, TX</h2>
+                <!-- -------------- Insert a plot here --------------- -->
+                <div id="tester" style="width:100%;height:100%;"></div>
+                <!-- -------------- ------------------ --------------- -->
+            </div>
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Start Latitude</th>
+                                <th>Start Longitude</th>
+                                <th>End Latitude</th>
+                                <th>End Longitude</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1,001</td>
+                                <td>Lorem</td>
+                                <td>ipsum</td>
+                                <td>dolor</td>
+                                <td>sit</td>
+                            </tr>
+                            <tr>
+                                <td>1,002</td>
+                                <td>amet</td>
+                                <td>consectetur</td>
+                                <td>adipiscing</td>
+                                <td>elit</td>
+                            </tr>
+                            <tr>
+                                <td>1,003</td>
+                                <td>Integer</td>
+                                <td>nec</td>
+                                <td>odio</td>
+                                <td>Praesent</td>
+                            </tr>
+                            <tr>
+                                <td>1,003</td>
+                                <td>libero</td>
+                                <td>Sed</td>
+                                <td>cursus</td>
+                                <td>ante</td>
+                            </tr>
+                            <tr>
+                                <td>1,004</td>
+                                <td>dapibus</td>
+                                <td>diam</td>
+                                <td>Sed</td>
+                                <td>nisi</td>
+                            </tr>
+                            <tr>
+                                <td>1,005</td>
+                                <td>Nulla</td>
+                                <td>quis</td>
+                                <td>sem</td>
+                                <td>at</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1>This is an H1 Title!</h1>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
+                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
+                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
+            </p>
+        </div>
+    </div>
+</main>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Plots -->
+<script>
+    TESTER = document.getElementById('tester');
+    Plotly.newPlot(TESTER, [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16]
+    }], {
+        margin: { t: 0 }
+    });
+</script>
+{% endblock %}
