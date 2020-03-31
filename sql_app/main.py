@@ -52,6 +52,15 @@ def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
     return complaints
 
 
+
+@app.get("/queries")
+def read_queries(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    queries = crud.get_queries(db, skip=skip, limit=limit)
+    return queries
+
+
+
+
 @app.get("/scooter_trips", response_model=List[schemas.Trip])
 def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     trips = crud.get_trips(db, skip=skip, limit=limit)
@@ -59,9 +68,9 @@ def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 
 @app.get("/random")
-def generate_scooter(request: Request):
-    # generate random # - display scooter ride
-    return templates.TemplateResponse("random.html", {"request": request})
+def generate_scooter(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    random = crud.get_random(db, skip=skip, limit=limit)
+    return random
 
 
 @app.get("/zipcode/{zipcode}")
