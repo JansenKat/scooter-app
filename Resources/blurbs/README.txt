@@ -4,7 +4,8 @@ Data Analysis and Visualization
 Boot Camp 2019-2020
 JSON& Team (2) (T/Th)
 
-If you've been out and about on campus or in downtown Austin, you can't help but notice that scooters are all over the place. We decided to investigate the idea that people ditch scooters after use and see how often and in what neighborhoods scooter ditching results in a complaint. 
+If you've been out and about on campus or in downtown Austin, you can't help but notice that scooters are all over the place. 
+We decided to investigate the idea that people ditch scooters after use and see how often and in what neighborhoods scooter ditching results in a complaint. 
 In our first project we merged data sets to create visualizations comparing complaints to rides, to see if there were some neighborhoods that were being the squeaky wheels or if there really was a scooter problem in certain areas. 
 As we had hypothesized, scooters that find their way into further out neighborhoods are less likely to be picked up and thus take longer to be ridden back into town, are much more likely to result in a complaint. 
 
