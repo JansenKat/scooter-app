@@ -46,7 +46,7 @@ async def home(request: Request):
 
 
 # API Routes
-@app.get("/complaints", response_model=List[schemas.Complaint])
+@app.get("/complaints")
 def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     complaints = crud.get_complaints(db, skip=skip, limit=limit)
     return complaints
