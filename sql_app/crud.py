@@ -18,17 +18,17 @@ def get_random(db: Session, skip: int = 0, limit: int = 100):
         "SELECT s.* FROM scooter_data AS s \
         INNER JOIN (SELECT ROUND(RAND() * (SELECT MAX(trip_id) FROM scooter_data )) AS rand_id) AS x \
         WHERE s.trip_id = x.rand_id LIMIT 1;"
-    ) 
+    )
     res_str = json.dumps([dict(r) for r in res])
     return json.loads(res_str)
 
 
-def get_queries(db: Session, skip: int = 0, limit: int = 100):
+def get_complaints(db: Session, skip: int = 0, limit: int = 100):
     res = db.execute(
-        "SELECT s.trip_duration ,s.trip_distance ,s.census_tract_start ,s.census_tract_end, s.census_tract_end, \
-        1 + 0.15 * (s.trip_duration/60) as 'cost' \
-        FROM scooter_data s \
-        ORDER BY trip_duration desc LIMIT 10;"
+        "SELECT t.latitude_coord AS 'SR_Location_Lat' ,t.longitude_coord AS 'SR_Location_Lon' \
+        ,t.zip_code AS 'SR_Location_Zip_Code' FROM 311_data t \
+        WHERE t.sr_desc = 'Shared Micromobility' AND t.zip_code > 0 \
+        LIMIT 1;"
     )
     res_str = json.dumps([dict(r) for r in res])
     return json.loads(res_str)

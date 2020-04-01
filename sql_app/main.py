@@ -42,11 +42,12 @@ def get_db():
 @app.get("/")
 async def home(request: Request):
     # list of links to other routes
-    return templates.TemplateResponse("index.html", {"request": request})
-
+    home = crud.get_complaints(db, skip=skip, limit=limit)
+    return templates.TemplateResponse("index.html", {"request": request, "data": home})
+    
 
 # API Routes
-@app.get("/complaints", response_model=List[schemas.Complaint])
+@app.get("/complaints")
 def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     complaints = crud.get_complaints(db, skip=skip, limit=limit)
     return complaints
