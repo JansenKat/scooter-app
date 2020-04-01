@@ -42,35 +42,37 @@ def get_db():
 @app.get("/")
 async def home(request: Request):
     # list of links to other routes
+    # home = crud.get_complaints(db, skip=skip, limit=limit)
     return templates.TemplateResponse("index.html", {"request": request})
 
 
 # API Routes
-@app.get("/complaints", response_model=List[schemas.Complaint])
+@app.get("/complaints_api")
 def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     complaints = crud.get_complaints(db, skip=skip, limit=limit)
     return complaints
 
 
-
-@app.get("/queries")
-def read_queries(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    queries = crud.get_queries(db, skip=skip, limit=limit)
-    return queries
+@app.get("/complaints")
+def show_compliants(request: Request):
+    return templates.TemplateResponse("complaints.html", {"request": request})
 
 
+# @app.get("/scooter_trips", response_model=List[schemas.Trip])
+# def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+#    trips = crud.get_trips(db, skip=skip, limit=limit)
+#    return trips
 
 
-@app.get("/scooter_trips", response_model=List[schemas.Trip])
-def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    trips = crud.get_trips(db, skip=skip, limit=limit)
-    return trips
+@app.get("/random_api")
+def get_random(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    random = crud.get_random(db, skip=skip, limit=limit)
+    return random
 
 
 @app.get("/random")
-def generate_scooter(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    random = crud.get_random(db, skip=skip, limit=limit)
-    return random
+def show_random(request: Request):
+    return templates.TemplateResponse("random.html", {"request": request})
 
 
 @app.get("/zipcode/{zipcode}")
@@ -81,16 +83,37 @@ def zip_stats(zipcode, request: Request):
     )
 
 
-@app.get("/long")
-def longest(request: Request):
-    # display longest ride distance/time
+@app.get("/distance_api")
+def read_distance(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    distance = crud.get_distance(db, skip=skip, limit=limit)
+    return distance
+
+
+@app.get("/distance")
+def show_distance(request: Request):
     return templates.TemplateResponse("long.html", {"request": request})
 
 
-@app.get("/nowhere")
-def nowhere(request: Request):
-    # rides that go nowhere, some plots on this. where/when
-    return templates.TemplateResponse("nowhere.html", {"request": request})
+@app.get("/duration_api")
+def read_duration(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    duration = crud.get_duration(db, skip=skip, limit=limit)
+    return duration
+
+
+@app.get("/duration")
+def show_duration(request: Request):
+    return templates.TemplateResponse("long.html", {"request": request})
+
+
+@app.get("/zero_distance_api")
+def read_zero_distance(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    zero_distance = crud.get_zero_distance(db, skip=skip, limit=limit)
+    return zero_distance
+
+
+@app.get("/zero_distance")
+def show_zero_distance(request: Request):
+    return templates.TemplateResponse("nowhereg.html", {"request": request})
 
 
 @app.get("/red_zone")
