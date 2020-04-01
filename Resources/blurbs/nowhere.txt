@@ -1,1 +1,3 @@
 http://127.0.0.1:8000/nowhere
+
+A huge limitation with our first data set was that we had a lot of rides that went no where. We wanted to embrace this limitation and dig into some of the questions we had about rides that go nowhere. 
