@@ -1,4 +1,4 @@
-Plotly.d3.csv('final_copy.csv', function(err, rows){
+Plotly.d3.csv("final_copy.csv", function(err, rows){
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });}
 
@@ -21,12 +21,13 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
 
     for ( var i = 0 ; i < count.length; i++ ) {
         var opacityValue = count[i]/getMaxOfArray(count);
-
+        // var startlong2 = startLongitude[i].slice(0, -2)
+        // console.log(startlong2)
         var result = {
             type: 'scattermapbox',
             locationmode: 'USA-states',
             projection: 'albers usa',
-            lon: [ endLongitude[i] , startLongitude[i]],
+            lon: [ endLongitude[i].slice(0, -2) , startLongitude[i].slice(0, -2)],
             lat: [ startLat[i] , endLat[i]],
             mode: 'lines+markers',
             line: {

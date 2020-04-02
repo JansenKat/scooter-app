@@ -1,4 +1,4 @@
-Plotly.d3.csv('longest_duration.csv', function(err, rows){
+Plotly.d3.json('/duration_api', function(err, rows){
   console.log(rows)
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });}
@@ -79,7 +79,7 @@ Plotly.d3.csv('longest_duration.csv', function(err, rows){
     mapboxAccessToken:"pk.eyJ1Ijoic2toYW4wNyIsImEiOiJjazg4dXNsNmUwMGFuM2ZudHNiaXU1Y3kwIn0.uDCrOvOHUNL7qdsiOUwMPA"
   });
 
-  Plotly.newPlot('myDiv', data, layout, {displayModeBar: false})
+  Plotly.newPlot('myDiv1', data, layout, {displayModeBar: false})
 
   ;
 

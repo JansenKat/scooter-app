@@ -1,4 +1,5 @@
-Plotly.d3.csv('final_copy.csv', function(err, rows){
+Plotly.d3.json('/duration_api', function(err, rows){
+  console.log(rows)
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });}
 
@@ -7,7 +8,7 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
     }
     var scl =['rgb(213,62,79)','rgb(244,109,67)','rgb(253,174,97)','rgb(254,224,139)','rgb(255,255,191)','rgb(230,245,152)','rgb(171,221,164)','rgb(102,194,165)','rgb(50,136,189)','rgb(60,176,129)'];
     var data = [];
-    var count = unpack(rows, 'cnt');
+    var count = unpack(rows, 'trip_distance');
     console.log(count)
     console.log(rows)
     var startLongitude = unpack(rows, 'startLon');
@@ -21,7 +22,8 @@ Plotly.d3.csv('final_copy.csv', function(err, rows){
 
     for ( var i = 0 ; i < count.length; i++ ) {
         var opacityValue = count[i]/getMaxOfArray(count);
-
+        var startlong2 = startLongitude[i].slice(0, -2)
+        // console.log(startlong2)
         var result = {
             type: 'scattermapbox',
             locationmode: 'USA-states',
