@@ -80,7 +80,7 @@ Plotly.d3.json('/duration_api', function(err, rows){
     mapboxAccessToken:"pk.eyJ1Ijoic2toYW4wNyIsImEiOiJjazg4dXNsNmUwMGFuM2ZudHNiaXU1Y3kwIn0.uDCrOvOHUNL7qdsiOUwMPA"
   });
 
-  Plotly.newPlot('myDiv', data, layout, {displayModeBar: false})
+  Plotly.newPlot('longDiv2', data, layout, {displayModeBar: false})
 
   ;
 

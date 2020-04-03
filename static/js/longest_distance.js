@@ -78,7 +78,7 @@ Plotly.d3.json('/distance_api', function(err, rows){
     mapboxAccessToken:"pk.eyJ1Ijoic2toYW4wNyIsImEiOiJjazg4dXNsNmUwMGFuM2ZudHNiaXU1Y3kwIn0.uDCrOvOHUNL7qdsiOUwMPA"
   });
 
-  Plotly.newPlot('myDiv1', data, layout, {displayModeBar: false})
+  Plotly.newPlot('longDiv', data, layout, {displayModeBar: false})
 
   ;
 
