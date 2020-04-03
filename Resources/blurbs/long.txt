@@ -1,3 +1,3 @@
 http://127.0.0.1:8000/long
 
-Check out some of the longest scooter rides in Austin, specifically the longest ride in our dataset which started in x and ended in y. 
+Use this dropdown to toggle between longest distance and longest time. Check out some of the longest scooter rides in Austin. Note that these coordinates are estimates, for privacy reasons, exact locations are adjusted. 
