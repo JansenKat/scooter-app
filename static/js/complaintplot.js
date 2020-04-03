@@ -65,5 +65,5 @@ Plotly.d3.json("/complaints_api", data=>{
     mapboxAccessToken:"pk.eyJ1IjoiZXJpbmJlbnRsZXkiLCJhIjoiY2s3djN5YzNvMDcxMTNlcnl0NWljd21rMiJ9.nNWqZ59pebYdqsr6VR3qfQ"
   });
 
-  Plotly.newPlot('myDiv', plotdata, layout);
+  Plotly.newPlot('tester', plotdata, layout);
 });
