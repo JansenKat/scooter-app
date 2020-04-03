@@ -13,11 +13,17 @@ In our previous presentation, we called out some limitations and remaining quest
 
 Our Project is a dashboard for reviewing complaints, rides, and certain trends that we found interesting. 
 The routes we decided to demonstrate for you all are:
+
 • Longest rides
+
 • Rides that went nowhere
+
 • Explore a random ride that someone took in Austin	
+
 • What is the red zone, or neighborhoods you just shouldn't leave scooters in?
+
 • What are the percent of complaints, rides in, rides out, and other stats about specific zip codes? 
+
 
 We hope you'll find this data to be as interesting as we did, regardless of whether you consider yourself a part of the shared mobility revolution or not.
 
