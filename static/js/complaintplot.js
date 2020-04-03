@@ -1,32 +1,32 @@
-Plotly.d3.csv('311data.csv', function(err, rows){
+Plotly.d3.csv('./static/311data.csv', function (err, rows) {
 
   var classArray = unpack(rows, 'class');
   var classes = [...new Set(classArray)];
 
   function unpack(rows, key) {
-    return rows.map(function(row) { return row[key]; });
+    return rows.map(function (row) { return row[key]; });
   }
 
-  var data = classes.map(function(classes) {
-    var rowsFiltered = rows.filter(function(row) {
-        return (row.class === classes);
+  var data = classes.map(function (classes) {
+    var rowsFiltered = rows.filter(function (row) {
+      return (row.class === classes);
     });
     return {
-       type: 'scattermapbox',
-       name: classes,
-       lat: unpack(rowsFiltered, 'SR Location Lat'),
-       lon: unpack(rowsFiltered, 'SR Location Long'),
-       hoverinfo: 'text',
-       text: unpack(rows, 'SR Location Zip Code'),
-    color_discrete_sequence: ["red"],
+      type: 'scattermapbox',
+      name: classes,
+      lat: unpack(rowsFiltered, 'latitude_coord'),
+      lon: unpack(rowsFiltered, 'longitude_coord'),
+      hoverinfo: 'text',
+      text: unpack(rows, 'zip_code'),
+      color_discrete_sequence: ["red"],
     };
   });
-  
+
   var layout = {
-	 title: 'Scooter Complaint Locations',
-	 font: {
-		 color: 'white'
-	 },
+    title: 'Scooter Complaint Locations',
+    font: {
+      color: 'white'
+    },
     dragmode: 'zoom',
     mapbox: {
       center: {
@@ -39,8 +39,8 @@ Plotly.d3.csv('311data.csv', function(err, rows){
       },
       style: 'dark',
       zoom: 10
-    
-    
+
+
     },
     margin: {
       r: 20,
@@ -52,18 +52,18 @@ Plotly.d3.csv('311data.csv', function(err, rows){
     paper_bgcolor: '#191A1A',
     plot_bgcolor: '#191A1A',
     showlegend: true,
-	 annotations: [{
-		 x: 0,
-       y: 0,
-       xref: 'paper',
-       yref: 'paper',
-		 showarrow: false
-	 }]
+    annotations: [{
+      x: 0,
+      y: 0,
+      xref: 'paper',
+      yref: 'paper',
+      showarrow: false
+    }]
   };
 
   Plotly.setPlotConfig({
-    mapboxAccessToken:"pk.eyJ1IjoiZXJpbmJlbnRsZXkiLCJhIjoiY2s3djN5YzNvMDcxMTNlcnl0NWljd21rMiJ9.nNWqZ59pebYdqsr6VR3qfQ"
+    mapboxAccessToken: "pk.eyJ1IjoiZXJpbmJlbnRsZXkiLCJhIjoiY2s3djN5YzNvMDcxMTNlcnl0NWljd21rMiJ9.nNWqZ59pebYdqsr6VR3qfQ"
   });
 
-  Plotly.newPlot('myDiv', data, layout);
+  Plotly.newPlot('complaintDiv', data, layout);
 });
