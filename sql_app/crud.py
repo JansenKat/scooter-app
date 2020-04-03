@@ -97,7 +97,7 @@ def get_zero_hour(db: Session, skip: int = 0, limit: int = 100):
     res = db.execute(
         "SELECT CAST(hour(str_to_date(start_time, '%c/%e/%Y %h:%i:%s %p')) AS CHAR(2)) AS 'hour' \
         ,count(trip_duration) FROM zero_distance_chart z \
-        GROUP BY hour(str_to_date(start_time, '%c/%e/%Y %h:%i:%s %p'));"
+        GROUP BY CAST(hour(str_to_date(start_time, '%c/%e/%Y %h:%i:%s %p')) AS CHAR(2));"
     )
     res_str = json.dumps([dict(r) for r in res])
     return json.loads(res_str)
