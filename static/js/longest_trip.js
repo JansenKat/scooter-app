@@ -1,0 +1,93 @@
+let layout = {
+  dragmode: "zoom",
+  title: "Longest Trips",
+  showlegend: false,
+  mapbox: {
+    style: "dark",
+    center: { lat: 30.2280314, lon: -97.7734004 },
+    zoom: 10
+  },
+  margin: { r: 0, t: 0, b: 0, l: 0 }
+};
+
+let map = { 
+  "trip_distance" : "/distance_api",
+  "trip_duration" : "/duration_api"
+}
+
+function makePlot(category) {
+
+  Plotly.d3.json(map[category], function(err, rows){
+    console.log(rows)
+      function unpack(rows, key) {
+          return rows.map(function(row) { return row[key]; });}
+
+      function getMaxOfArray(numArray) {
+          return Math.max.apply(null, numArray);
+      }
+      var scl =['rgb(213,62,79)','rgb(244,109,67)','rgb(253,174,97)','rgb(254,224,139)','rgb(255,255,191)','rgb(230,245,152)','rgb(171,221,164)','rgb(102,194,165)','rgb(50,136,189)','rgb(60,176,129)'];
+      var data = [];
+      var count = unpack(rows, category);
+      console.log(count)
+      console.log(rows)
+      var startLongitude = unpack(rows, 'startLon');
+      var endLongitude = unpack(rows, 'endLon')
+      var startLat = unpack(rows, 'startLat');
+      var endLat = unpack(rows, 'endLat');
+      console.log("ending cordinates" + endLat);
+      console.log("starting cordinates" + startLat);
+      console.log("start long" + startLongitude);
+      console.log("end long" + endLongitude);
+
+      for ( var i = 0 ; i < count.length; i++ ) {
+          var opacityValue = count[i]/getMaxOfArray(count);
+          var startlong2 = startLongitude[i].slice(0, -2)
+          // console.log(startlong2)
+          var result = {
+              type: 'scattermapbox',
+              locationmode: 'USA-states',
+              projection: 'albers usa',
+              lon: [ endLongitude[i] , startLongitude[i]],
+              lat: [ startLat[i] , endLat[i]],
+              mode: 'lines+markers',
+              line: {
+                  width: 2,
+                  color: scl[i]
+              },
+              opacity: opacityValue
+          }
+          data.push(result);
+      };
+
+    Plotly.setPlotConfig({
+      mapboxAccessToken:"pk.eyJ1Ijoic2toYW4wNyIsImEiOiJjazg4dXNsNmUwMGFuM2ZudHNiaXU1Y3kwIn0.uDCrOvOHUNL7qdsiOUwMPA"
+    });
+
+    Plotly.newPlot('longDiv3', data, layout, {displayModeBar: false})
+
+    ;
+
+  });
+}
+
+function init() {
+  let plot = makePlot('trip_distance')
+}
+
+function getData(dataset) {
+  let traces = []
+  switch (dataset) {
+          case "trip_duration":
+              traces : makePlot('trip_duration')
+          break;
+          case "trip_distance":
+              traces : makeTraces('trip_distance')
+          break;
+          default:
+              traces : makeTraces('trip_distance')
+          break;
+      }
+  }
+
+init();
+
