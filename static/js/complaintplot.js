@@ -1,4 +1,4 @@
-Plotly.d3.json('/complaints', data => {
+Plotly.d3.csv('./static/311data.csv', function (err, rows) {
 
   var classArray = unpack(rows, 'class');
   var classes = [...new Set(classArray)];

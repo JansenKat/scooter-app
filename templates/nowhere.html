@@ -4,7 +4,7 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <!-- Insert title here -->
-        <h1 class="h2">Explore a NOWHERE Route!</h1>
+        <h1>Scooters in Austin, TX</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/" target="_blank"
@@ -16,7 +16,21 @@
     </div>
     <div class="container">
         <div class="row">
-            <h2>This is the Nowhere Route Austin, TX</h2>
+            <h2>Explore Scooter Rides that went.. Nowhere!</h2>
+        </div>
+        <br>
+        <div class="row">
+            <p> A huge limitation with our first data set was that we had a lot of rides that went nowhere. We wanted
+                to embrace this limitation and dig into some of the questions we had about rides that go nowhere.
+            </p>
+            <p><i>Hang out for a second, as some of this data takes longer to load, there are a lot of scooter
+                    rides!</i>
+            </p>
+            <p>The Y axis is logarithmic because there was such a range in duration. The average ride to nowhere was 2
+                minutes. One extreme was a 27.6 hour ride to nowhere.
+            </p>
+            <p>Use the dropdown below to toggle between filters.</p>
+
         </div>
         <div class="row">
             <select id="box_dropdown" onchange="getData(this.value)">
@@ -26,24 +40,10 @@
                 <option value="hour">Hours</option>
             </select>
         </div>
+        <br>
         <!-- -------------- Insert a plot here --------------- -->
         <div id="nowhereBar" style="width:100%;height:100%;"></div>
         <!-- -------------- ------------------ --------------- -->
-        <div class="row">
-            <h1>This is an H1 Title!</h1>
-            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
-                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
-                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
-            </p>
-            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
-                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
-                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
-            </p>
-            <p> HODOR hodor, hodor. Hodor, hodor. Hodor. Hodor. Hodor hodor HODOR! Hodor. HODOR? Hodor hodor! HODOR?
-                Hodor hodor. Hodor, hodor. Hodor. Hodor. Hodor, hodor. Hodor. Hodor... Hodor hodor. Hodor, hodor,
-                hodor hodor. HODOR? Hodor hodor! Hodor! Hodor hodor.
-            </p>
-        </div>
         <!-- -------------- Insert a plot here --------------- -->
         <div id="nowhereBox" style="width:100%;height:100%;"></div>
         <!-- -------------- ------------------ --------------- -->
