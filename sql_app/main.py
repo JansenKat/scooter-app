@@ -113,7 +113,33 @@ def read_zero_distance(skip: int = 0, limit: int = 100, db: Session = Depends(ge
 
 @app.get("/zero_distance")
 def show_zero_distance(request: Request):
-    return templates.TemplateResponse("nowhereg.html", {"request": request})
+    return templates.TemplateResponse("nowhere.html", {"request": request})
+
+
+# DECIMAL VALUE BEING RETURNED, MUST BE CONVERTED FOR JSON SERIALIZATION
+@app.get("/zero_zip_code_api")
+def read_zero_zip_code(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    zero_zip_code = crud.get_zero_zip_code(db, skip=skip, limit=limit)
+    return zero_zip_code
+
+
+@app.get("/zero_month_api")
+def read_zero_month(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    zero_month = crud.get_zero_month(db, skip=skip, limit=limit)
+    return zero_month
+
+
+@app.get("/zero_weekday_api")
+def read_zero_weekday(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    zero_weekday = crud.get_zero_weekday(db, skip=skip, limit=limit)
+    return zero_weekday
+
+
+# NEED TO CONVERT HOUR TO TEXT
+@app.get("/zero_hour_api")
+def read_zero_hour(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    zero_hour = crud.get_zero_hour(db, skip=skip, limit=limit)
+    return zero_hour
 
 
 @app.get("/red_zone")

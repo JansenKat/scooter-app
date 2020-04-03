@@ -1,4 +1,5 @@
 Plotly.d3.csv('./static/311data.csv', function (err, rows) {
+
   ​
     var classArray = unpack(rows, 'class');
     var classes = [...new Set(classArray)];
@@ -41,6 +42,7 @@ Plotly.d3.csv('./static/311data.csv', function (err, rows) {
         zoom: 10
   ​
   ​
+
       },
       margin: {
         r: 20,
