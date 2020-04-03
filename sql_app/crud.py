@@ -95,7 +95,7 @@ def get_zero_weekday(db: Session, skip: int = 0, limit: int = 100):
 
 def get_zero_hour(db: Session, skip: int = 0, limit: int = 100):
     res = db.execute(
-        "SELECT hour(str_to_date(start_time, '%c/%e/%Y %h:%i:%s %p')) AS 'hour' \
+        "SELECT CAST(hour(str_to_date(start_time, '%c/%e/%Y %h:%i:%s %p')) AS CHAR(2)) AS 'hour' \
         ,count(trip_duration) FROM zero_distance_chart z \
         GROUP BY hour(str_to_date(start_time, '%c/%e/%Y %h:%i:%s %p'));"
     )
