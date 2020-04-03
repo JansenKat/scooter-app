@@ -1,23 +1,23 @@
-Plotly.d3.csv('311data.csv', function(err, rows){
+Plotly.d3.json("/complaints_api", data=>{
 
-  var classArray = unpack(rows, 'class');
-  var classes = [...new Set(classArray)];
+  // var classArray = unpack(rows, 'class');
+  // var classes = [...new Set(classArray)];
 
-  function unpack(rows, key) {
-    return rows.map(function(row) { return row[key]; });
-  }
+  // function unpack(rows, key) {
+    // return rows.map(function(row) { return row[key]; });
+  // }
 
-  var data = classes.map(function(classes) {
-    var rowsFiltered = rows.filter(function(row) {
-        return (row.class === classes);
-    });
+  var plotdata = data.map(function(data) {
+  //   var rowsFiltered = rows.filter(function(row) {
+  //       return (row.class === classes);
+  //   });
     return {
        type: 'scattermapbox',
-       name: classes,
-       lat: unpack(rowsFiltered, 'SR Location Lat'),
-       lon: unpack(rowsFiltered, 'SR Location Long'),
+       name: data,
+       lat: data.SR_Location_Lat,
+       lon: data.SR_Location_Lon,
        hoverinfo: 'text',
-       text: unpack(rows, 'SR Location Zip Code'),
+       text: data.SR_Location_Zip_Code,
     color_discrete_sequence: ["red"],
     };
   });
@@ -65,5 +65,5 @@ Plotly.d3.csv('311data.csv', function(err, rows){
     mapboxAccessToken:"pk.eyJ1IjoiZXJpbmJlbnRsZXkiLCJhIjoiY2s3djN5YzNvMDcxMTNlcnl0NWljd21rMiJ9.nNWqZ59pebYdqsr6VR3qfQ"
   });
 
-  Plotly.newPlot('myDiv', data, layout);
+  Plotly.newPlot('myDiv', plotdata, layout);
 });
