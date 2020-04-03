@@ -5,10 +5,6 @@ from . import models, schemas
 import json
 
 
-def get_complaints(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Complaint).offset(skip).limit(limit).all()
-
-
 def get_trips(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Trip).offset(skip).limit(limit).all()
 
@@ -27,22 +23,25 @@ def get_complaints(db: Session, skip: int = 0, limit: int = 100):
     res = db.execute(
         "SELECT t.latitude_coord AS 'SR_Location_Lat' ,t.longitude_coord AS 'SR_Location_Lon' \
         ,t.zip_code AS 'SR_Location_Zip_Code' FROM 311_data t \
-        WHERE t.sr_desc = 'Shared Micromobility' AND t.zip_code > 0 \
-        LIMIT 1;"
+        WHERE t.sr_desc = 'Shared Micromobility' AND t.zip_code > 0"
     )
     res_str = json.dumps([dict(r) for r in res])
     return json.loads(res_str)
 
 
-# vehicle_id = Column(String)
-# vehicle_type = Column(String)
-# trip_duration = Column(Float)
-# trip_distance = Column(Float)
-# start_time = Column(String)
-# end_time = Column(String)
-# modified_date = Column(String)
-# council_dist_start = Column(String)
-# council_dist_end = Column(String)
-# year = Column(Integer)
-# census_tract_start = Column(String)
-# census_tract_end = Column(String)
+def get_distance(db: Session, skip: int = 0, limit: int = 100):
+    res = db.execute("SELECT * FROM distance_10_chart")
+    res_str = json.dumps([dict(r) for r in res])
+    return json.loads(res_str)
+
+
+def get_duration(db: Session, skip: int = 0, limit: int = 100):
+    res = db.execute("SELECT * FROM duration_10_chart")
+    res_str = json.dumps([dict(r) for r in res])
+    return json.loads(res_str)
+
+
+def get_zero_distance(db: Session, skip: int = 0, limit: int = 100):
+    res = db.execute("SELECT * FROM zero_distance_chart")
+    res_str = json.dumps([dict(r) for r in res])
+    return json.loads(res_str)
