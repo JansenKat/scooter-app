@@ -29,6 +29,8 @@
     <link href="{{ url_for('static', path='/dashboard.css') }}" rel="stylesheet">
     <!-- Plotly CDN -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -67,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="complaints" target="_blank">
+                            <a class="nav-link" href="complaints_api" target="_blank">
                                 <span data-feather="bar-chart-2"></span>
                                 Complaints <span class="sr-only"></span>
                             </a>
@@ -110,7 +112,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="zipcode/78701">
+                            <a class="nav-link" href="random3">
                                 <span data-feather="layers"></span>
                                 Zip Code <span class="sr-only"></span>
                             </a>

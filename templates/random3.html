@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1>Scooters in Austin, TX</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/" target="_blank"
+                    data-mce-target="_blank">
+                    <button class="btn btn-sm btn-outline-secondary">Share</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <h2>Explore Data by Zipcode</h2>
+        </div>
+        <div class="row">
+            <p>Does your neighborhood have a scooter problem? Or a complainer problem? Explore the complaints from a
+                specific zip code by entering a zip code at the end of the URL. See the table that is generated to see
+                if those squeaking wheels you hear are scooters or nagging neighbors.</p>
+        </div>
+        <div class="row">
+            <div class="well">
+                <h5>SELECT Zipcode:</h5>
+                <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                </div>
+                <div id="zipcodeDiv" class="panel-body"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Plots -->
+<script src="./static/js/zipcode.js"></script>
+{% endblock %}
