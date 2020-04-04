@@ -12,13 +12,13 @@ let boxLayout = {
 
 
 //Function to define and gather the traces for whichever category
-function makeTraces(category) {
+function makePlot(category) {
 
     let traces = []
 
     Plotly.d3.json('/zero_distance_api', data => {
 
-        console.log(category + " Data Retrieved")
+        console.log(category + " box data retrieved")
         
         //This will define the distinct options and order them correctly
         //Chronological ordering for weekday, month_name and hour, 
@@ -61,29 +61,27 @@ function makeTraces(category) {
 }
 
 function init() {
-    
-    let traces = makeTraces('weekday')
+    makePlot('weekday')
 }
 
 function getData(dataset) {
     // Changing the traces 
-    let traces = []
 
     switch (dataset) {
         case "zip":
-            traces : makeTraces('zip')
+            makePlot('zip')
         break;
         case "hour":
-            traces : makeTraces('hour')
+            makePlot('hour')
         break;
         case "month_name":
-            traces : makeTraces('month_name')
+            makePlot('month_name')
         break;
         case "weekday":
-            traces : makeTraces('weekday')
+            makePlot('weekday')
         break;
         default:
-            traces : makeTraces('weekday')
+            makePlot('weekday')
         break;
     }
     // console.log(traces)
