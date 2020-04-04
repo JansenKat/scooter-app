@@ -75,12 +75,10 @@ def show_random(request: Request):
     return templates.TemplateResponse("random.html", {"request": request})
 
 
-@app.get("/zipcode/{zipcode}")
-def zip_stats(zipcode, request: Request):
+@app.get("/zipcode")
+def zip_stats(request: Request):
     # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
-    return templates.TemplateResponse(
-        "zipcode.html", {"request": request, "zipcode": zipcode}
-    )
+    return templates.TemplateResponse("zipcode.html", {"request": request})
 
 
 @app.get("/distance_api")

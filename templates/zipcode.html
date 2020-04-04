@@ -25,15 +25,15 @@
         </div>
         <div class="row">
             <div class="well">
-                <h5>SELECT Zipcode:</h5>
-                <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                <h5>SELECT Zipcode:</h5><select id="selDataset" onchange="optionChanged(this.value)"></select>
             </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                </div>
-                <div id="sample-metadata" class="panel-body"></div>
-            </div>
+            <div class="panel panel-primary"></div>
+            <div class="panel-heading"></div>
         </div>
+    </div>
+    <div class="row">
+        <div id="zipcodeDiv" class="panel-body"></div>
+    </div>
     </div>
 </main>
 
@@ -44,13 +44,5 @@
 </script>
 
 <!-- Plots -->
-<!-- <script>
-    TESTER = document.getElementById('tester');
-    Plotly.newPlot(TESTER, [{
-        x: [1, 2, 3, 4, 5],
-        y: [1, 2, 4, 8, 16]
-    }], {
-        margin: { t: 0 }
-    });
-</script> -->
+<script src="./static/js/zipcode.js"></script>
 {% endblock %}

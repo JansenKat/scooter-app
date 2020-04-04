@@ -1,4 +1,4 @@
-Plotly.d3.csv('./static/311data.csv', function (err, rows) {
+Plotly.d3.json('/complaints_api', function (err, rows) {
 
   var classArray = unpack(rows, 'class');
   var classes = [...new Set(classArray)];
@@ -14,10 +14,10 @@ Plotly.d3.csv('./static/311data.csv', function (err, rows) {
     return {
       type: 'scattermapbox',
       name: classes,
-      lat: unpack(rowsFiltered, 'latitude_coord'),
-      lon: unpack(rowsFiltered, 'longitude_coord'),
+      lat: unpack(rowsFiltered, 'SR_Location_Lat'),
+      lon: unpack(rowsFiltered, 'SR_Location_Lon'),
       hoverinfo: 'text',
-      text: unpack(rows, 'zip_code'),
+      text: unpack(rows, 'SR_Location_Zip_Code'),
       color_discrete_sequence: ["red"],
     };
   });
