@@ -8,7 +8,7 @@ const apiMap = {
   'zip' : "/zero_zip_code_api"
 }
 
-let layout = {
+let barLayout = {
   title:"Number of Trips",
   showlegend:false,
   yaxis: {
@@ -49,17 +49,6 @@ function makeBarPlot(category) {
     ]
     console.log(trace)
 
-    Plotly.newPlot("nowhereBar", trace, layout)
+    Plotly.newPlot("nowhereBar", trace, barLayout)
   })
 }
-
-// function init() {
-//   makePlot('weekday')
-// }
-
-// function getBarData(dataset) {
-//     // Changing dataset 
-//     makePlot(dataset)
-// }
-
-// init();
