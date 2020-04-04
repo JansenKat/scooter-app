@@ -40,7 +40,7 @@ function makeBarPlot(category) {
     let trace = [
       {
         x: data.map(element => element[category]),
-        y: data.map(element => element['count(trip_duration)']),
+        y: data.map(element => element['ride_count']),
         type: 'bar',
         marker : {
           color : 'rgb(8,81,156)'
