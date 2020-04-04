@@ -12,13 +12,13 @@ let boxLayout = {
 
 
 //Function to define and gather the traces for whichever category
-function makeTraces(category) {
+function makeBoxPlot(category) {
 
     let traces = []
 
     Plotly.d3.json('/zero_distance_api', data => {
 
-        console.log(category + " Data Retrieved")
+        console.log(category + " box data retrieved")
         
         //This will define the distinct options and order them correctly
         //Chronological ordering for weekday, month_name and hour, 
@@ -26,7 +26,7 @@ function makeTraces(category) {
             'weekday' : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             'month_name' : ["January", "February","March","April","May","June","July","August","September","October","November","December"],
             'hour' : [...new Set(data.map(e => e.hour))].sort((a,b) => a - b),
-            'zip': [...new Set(data.map(e => e.zip))].sort((a,b) => a - b)
+            'zip': [...new Set(data.sort((a,b) => a.trip_duration - b.trip_duration).map(e => e.zip))]
         }
 
         let distinct = map[category]
@@ -59,34 +59,3 @@ function makeTraces(category) {
     })
     return traces
 }
-
-function init() {
-    
-    let traces = makeTraces('weekday')
-}
-
-function getData(dataset) {
-    // Changing the traces 
-    let traces = []
-
-    switch (dataset) {
-        case "zip":
-            traces : makeTraces('zip')
-        break;
-        case "hour":
-            traces : makeTraces('hour')
-        break;
-        case "month_name":
-            traces : makeTraces('month_name')
-        break;
-        case "weekday":
-            traces : makeTraces('weekday')
-        break;
-        default:
-            traces : makeTraces('weekday')
-        break;
-    }
-    // console.log(traces)
-}
-
-init();

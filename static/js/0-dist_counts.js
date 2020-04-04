@@ -1,90 +1,54 @@
 const day_name = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const month_name = ["January", "February","March","April","May","June","July","August","September","October","November","December"]
  
-
-//Create traces per grouping
-let zip_trace = [
-  {
-    x: zipcode.index,
-    y: zipcodes['trip_id'],
-    type: 'bar'
-  }
-];
-
-let week_trace = [
-  {
-    x: day_name,
-    y: weekdays['trip_id'],
-    type: 'bar'
-  }
-];
-
-let hour_trace = [
-  {
-    x: hours.index,
-    y: hours['trip_id'],
-    type: 'bar'
-  }
-];
-
-let month_trace = [
-  {
-    x: month_name,
-    y: months['trip_id'],
-    type: 'bar'
-  }
-];
-
-count_data = [zip_trace, week_trace, hour_trace, month_trace]
-
-//Add menu to flip between groupings
-let updatemenus=[
-  {
-      buttons: [
-          {
-            label = "Zipcode",
-            method = "update",
-            args = [{"visible": [True, False, False, False]}]
-          },
-          {
-            label = "Weekday",
-            method = "update",
-            args = [{"visible": [True, False, False, False]}]
-          },
-          {
-            label = "Hours",
-            method = "update",
-            args = [{"visible": [True, False, False, False]}]
-          },
-          {
-            label = "Months",
-            method = "update",
-            args = [{"visible": [True, False, False, False]}]
-          },
-      ],
-      active : 0
-      showactive: true,
-      type: 'buttons',
-      x : 1.00,
-      y : 1.10,
-      yanchor : 'top',
-  }
-]
-
-let count_layout = {
-    title:"Number of Trips",
-    showlegend:False,
-    autosize:False,
-    width:1000,
-    height:800,
-    yaxis: {
-        title:"Trip Count",
-        showgrid:True
-      },
-    updatemenus:updatemenus,
-    plot_bgcolor:'rgba(0,0,0,0)',
-    paper_bgcolor:'rgba(0,0,0,0)',
-    xaxis_type : 'category'
+const apiMap = {
+  'weekday' : "/zero_weekday_api",
+  'month_name' : "/zero_month_api",
+  'hour' : "/zero_hour_api",
+  'zip' : "/zero_zip_code_api"
 }
 
-Plotly.newPlot("myDiv", count_data, count_layout)
+let barLayout = {
+  title:"Number of Trips",
+  showlegend:false,
+  yaxis: {
+      title:"Trip Count",
+      showgrid:true
+    },
+  plot_bgcolor:'rgba(0,0,0,0)',
+  paper_bgcolor:'rgba(0,0,0,0)',
+  xaxis_type : 'category'
+}
+
+//Create traces per grouping
+
+function makeBarPlot(category) {
+
+  Plotly.d3.json(apiMap[category], data => {
+
+    let sortMap = {
+      'weekday' : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      'month_name' : ["January", "February","March","April","May","June","July","August","September","October","November","December"],
+      'hour' : [...new Set(data.map(e => e.hour))].sort((a,b) => a - b),
+      'zip': [...new Set(data.map(e => e.zip))].sort((a,b) => a - b)
+    }
+
+    data.sort(function(a, b) {
+      return sortMap[category].indexOf(a[category]) - sortMap[category].indexOf(b[category]);
+    });
+
+    let trace = [
+      {
+        x: data.map(element => element[category]),
+        y: data.map(element => element['count(trip_duration)']),
+        type: 'bar',
+        marker : {
+          color : 'rgb(8,81,156)'
+        }
+      }
+    ]
+    console.log(trace)
+
+    Plotly.newPlot("nowhereBar", trace, barLayout)
+  })
+}
