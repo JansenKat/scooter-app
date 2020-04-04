@@ -12,7 +12,7 @@ let boxLayout = {
 
 
 //Function to define and gather the traces for whichever category
-function makePlot(category) {
+function makeBoxPlot(category) {
 
     let traces = []
 
@@ -60,31 +60,14 @@ function makePlot(category) {
     return traces
 }
 
-function init() {
-    makePlot('weekday')
-}
 
-function getData(dataset) {
-    // Changing the traces 
-
-    switch (dataset) {
-        case "zip":
-            makePlot('zip')
-        break;
-        case "hour":
-            makePlot('hour')
-        break;
-        case "month_name":
-            makePlot('month_name')
-        break;
-        case "weekday":
-            makePlot('weekday')
-        break;
-        default:
-            makePlot('weekday')
-        break;
-    }
-    // console.log(traces)
-}
-
-init();
+// function init() {
+//     makePlot('weekday')
+//   }
+  
+//   function getBoxData(dataset) {
+//       // Changing dataset 
+//       makePlot(dataset)
+//   }
+  
+//   init();

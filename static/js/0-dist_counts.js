@@ -53,13 +53,13 @@ function makeBarPlot(category) {
   })
 }
 
-function init() {
-  makeBarPlot('weekday')
-}
+// function init() {
+//   makePlot('weekday')
+// }
 
-function getData(dataset) {
-    // Changing dataset 
-    makeBarPlot(dataset)
-}
+// function getBarData(dataset) {
+//     // Changing dataset 
+//     makePlot(dataset)
+// }
 
-init();
+// init();
