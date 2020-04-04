@@ -20,16 +20,19 @@
         </div>
         <br>
         <div class="row">
-            <p> A huge limitation with our first data set was that we had a lot of rides that went nowhere. We wanted
-                to embrace this limitation and dig into some of the questions we had about rides that go nowhere.
+            <p> A huge <i>limitation</i> with our first data set was the high number of rides that went "nowhere".
+                We decided to embrace this <li>limitation</i> and dig into the data.
             </p>
-            <p><i>Hang out for a second, as some of this data takes longer to load, there are a lot of scooter
-                    rides!</i>
+            <p><i>Hang out for a second, as the data loads..</i> There are a lot of scooter rides!</p>
             </p>
-            <p>The Y axis is logarithmic because there was such a range in duration. The average ride to nowhere was 2
-                minutes. One extreme was a 27.6 hour ride to nowhere.
+            <p>Fun Facts:
+                <ul>
+                    <li>The average ride that went "nowhere" was 2 minutes.</li>
+                    <li>One extreme was a 27.6 hour ride!</li>
+                </ul>
             </p>
-            <p>Use the dropdown below to toggle between filters.</p>
+            <p>Use the dropdown below to toggle between filters. Note, the plots use a logarithmic Y axis
+                due to wide ranges of duration.</p>
 
         </div>
         <div class="row">
@@ -59,4 +62,5 @@
 <!-- Plots -->
 <script src="./static/js/0-dist_box.js"></script>
 <script src="./static/js/0-dist_counts.js"></script>
+<script src="./static/js/0-dist_init.js"></script>
 {% endblock %}

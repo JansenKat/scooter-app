@@ -16,24 +16,29 @@
 
     <div class="container">
         <div class="row">
-            <h2>Explore Data by Zipcode</h2>
+            <h2> Explore data around a Random Scooter Ride in Austin, TX</h2>
+        </div>
+        <br>
+        <div class="row">
+            <p>Live vicariously through someone who took a real scooter ride in Austin, TX. Generate a random ride and,
+                using the trends from the rest of our data, ask yourself if you think this ride resulted in a complaint
+                to 311.
+
+                If it is a dot, it is a ride that did not have a significant distance. There are a lot of reasons why a
+                short ride could occur.</p>
         </div>
         <div class="row">
-            <p>Does your neighborhood have a scooter problem? Or a complainer problem? Explore the complaints from a
-                specific zip code by entering a zip code at the end of the URL. See the table that is generated to see
-                if those squeaking wheels you hear are scooters or nagging neighbors.</p>
+            <select id="box_dropdown" onchange="getData(this.value)">
+                <option value="zip">Zipcode</option>
+            </select>
         </div>
+        <br>
+        <!-- -------------- Insert a plot here --------------- -->
         <div class="row">
-            <div class="well">
-                <h5>SELECT Zipcode:</h5><select id="selDataset" onchange="optionChanged(this.value)"></select>
-            </div>
-            <div class="panel panel-primary"></div>
-            <div class="panel-heading"></div>
+            <div id="randomDiv" style="width:100%;height:100%;"></div>
         </div>
-    </div>
-    <div class="row">
-        <div id="zipcodeDiv" class="panel-body"></div>
-    </div>
+        <!-- -------------- ------------------ --------------- -->
+
     </div>
 </main>
 
@@ -44,5 +49,5 @@
 </script>
 
 <!-- Plots -->
-<script src="./static/js/zipcode.js"></script>
+<script src="./static/js/random.js"></script>
 {% endblock %}

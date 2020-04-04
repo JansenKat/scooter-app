@@ -29,6 +29,8 @@
     <link href="{{ url_for('static', path='/dashboard.css') }}" rel="stylesheet">
     <!-- Plotly CDN -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -67,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="complaints" target="_blank">
+                            <a class="nav-link" href="complaints_api" target="_blank">
                                 <span data-feather="bar-chart-2"></span>
                                 Complaints <span class="sr-only"></span>
                             </a>
@@ -87,32 +89,32 @@
                         <li class="nav-item">
                             <a class="nav-link" href="distance">
                                 <span data-feather="bar-chart"></span>
-                                Long <span class="sr-only"></span>
+                                Longest Rides <span class="sr-only"></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="zero_distance">
                                 <span data-feather="bar-chart-2"></span>
-                                Nowhere <span class="sr-only"></span>
+                                Nowhere Rides <span class="sr-only"></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="random">
                                 <span data-feather="bar-chart-2"></span>
-                                Random <span class="sr-only"></span>
+                                Random Ride <span class="sr-only"></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="red_zone">
                                 <span data-feather="layers"></span>
-                                Red Zone <span class="sr-only"></span>
+                                Red Zones <span class="sr-only"></span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="zipcode/78701">
+                            <a class="nav-link" href="zipcode">
                                 <span data-feather="layers"></span>
-                                Zip Code <span class="sr-only"></span>
+                                Zip Code Analytics <span class="sr-only"></span>
                             </a>
                         </li>
                     </ul>
