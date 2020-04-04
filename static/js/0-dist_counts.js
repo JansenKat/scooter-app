@@ -33,6 +33,10 @@ function makePlot(category) {
       'zip': [...new Set(data.map(e => e.zip))].sort((a,b) => a - b)
     }
 
+    data.sort(function(a, b) {
+      return sortMap[category].indexOf(a[category]) - sortMap[category].indexOf(b[category]);
+    });
+
     let trace = [
       {
         x: data.map(element => element[category]),
