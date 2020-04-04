@@ -1,6 +1,4 @@
 from sqlalchemy.orm import Session
-
-# from fastapi.encoders import jsonable_encoder
 from . import models, schemas
 import json
 
@@ -8,12 +6,17 @@ import json
 def get_trips(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Trip).offset(skip).limit(limit).all()
 
-# def get_random(db: Session, skip: int = 0, limit: int = 100):
-#    res = db.execute(
-#
-#    )
-#    res_str = json.dumps([dict(r) for r in res])
-#    return json.loads(res_str)
+
+def get_random(db: Session, skip: int = 0, limit: int = 100):
+    res = db.execute()
+    res_str = json.dumps([dict(r) for r in res])
+    return json.loads(res_str)
+
+
+def get_zip_stats(db: Session, skip: int = 0, limit: int = 100):
+    res = db.execute("SELECT * FROM zip_plot;")
+    res_str = json.dumps([dict(r) for r in res])
+    return json.loads(res_str)
 
 
 def get_complaints(db: Session, skip: int = 0, limit: int = 100):
@@ -30,6 +33,14 @@ def get_distance(db: Session, skip: int = 0, limit: int = 100):
 
 def get_duration(db: Session, skip: int = 0, limit: int = 100):
     res = db.execute("SELECT * FROM duration_plot;")
+    res_str = json.dumps([dict(r) for r in res])
+    return json.loads(res_str)
+
+
+def get_red_zone(db: Session, skip: int = 0, limit: int = 100):
+    res = db.execute(
+        "SELECT * FROM red_zone r ORDER BY r.complaints_per_1000 LIMIT 20;"
+    )
     res_str = json.dumps([dict(r) for r in res])
     return json.loads(res_str)
 
