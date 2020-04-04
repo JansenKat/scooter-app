@@ -22,7 +22,7 @@ let layout = {
 
 //Create traces per grouping
 
-function makePlot(category) {
+function makeBarPlot(category) {
 
   Plotly.d3.json(apiMap[category], data => {
 
@@ -54,30 +54,12 @@ function makePlot(category) {
 }
 
 function init() {
-    makePlot('weekday')
+  makeBarPlot('weekday')
 }
 
 function getData(dataset) {
-    // Changing the traces 
-
-    switch (dataset) {
-        case "zip":
-            makePlot('zip')
-        break;
-        case "hour":
-            makePlot('hour')
-        break;
-        case "month_name":
-            makePlot('month_name')
-        break;
-        case "weekday":
-            makePlot('weekday')
-        break;
-        default:
-            makePlot('weekday')
-        break;
-    }
-    // console.log(traces)
+    // Changing dataset 
+    makeBarPlot(dataset)
 }
 
 init();
