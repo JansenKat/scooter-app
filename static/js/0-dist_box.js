@@ -18,7 +18,7 @@ function makeTraces(category) {
 
     Plotly.d3.json('/zero_distance_api', data => {
 
-        console.log("Duration Data Retrieved")
+        console.log(category + " Data Retrieved")
         
         //This will define the distinct options and order them correctly
         //Chronological ordering for weekday, month_name and hour, 
