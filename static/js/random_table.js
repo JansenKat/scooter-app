@@ -39,5 +39,5 @@ Plotly.d3.json("/random_api", function (err, rows) {
         title: "Random Scooter Ride"
     }
 
-    Plotly.newPlot('randomDiv', data, layout);
+    Plotly.newPlot('randomDiv2', data, layout);
 });
