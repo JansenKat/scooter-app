@@ -7,6 +7,8 @@ let boxLayout = {
         showgrid : true,
         type : "log"
     },
+    plot_bgcolor:'rgba(0,0,0,0)',
+    paper_bgcolor:'rgba(0,0,0,0)',
     xaxis_type : 'category'
 }
 
