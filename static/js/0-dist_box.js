@@ -26,7 +26,7 @@ function makeBoxPlot(category) {
             'weekday' : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             'month_name' : ["January", "February","March","April","May","June","July","August","September","October","November","December"],
             'hour' : [...new Set(data.map(e => e.hour))].sort((a,b) => a - b),
-            'zip': [...new Set(data.sort((a,b) => a.trip_duration - b.trip_duration).map(e => e.zip))]
+            'zip': [...new Set(data.map(e => e.zip))].slice(0,20)
         }
 
         let distinct = map[category]
