@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Scooter Analysis in Austin, TX">
+    <meta name="author" content="Thomas Gomez, Kat Jansen, Erin Bentley, Sana Khan, Jason Jones">
     <link rel="icon" href="./static/scooter-favicon.ico">
 
     <title>Scooters in Austin, TX - Dashboard</title>
@@ -34,15 +34,8 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">JSON N Team</a>
-        <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
-            </li>
-        </ul> -->
     </nav>
 
     <div class="container-fluid">
@@ -105,7 +98,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="red_zone">
+                            <a class="nav-link" href="redzone">
                                 <span data-feather="layers"></span>
                                 Red Zones <span class="sr-only"></span>
                             </a>
@@ -118,51 +111,24 @@
                             </a>
                         </li>
                     </ul>
-
-
-                    <!-- <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Current month
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Last quarter
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Social engagement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Year-end sale
-                            </a>
-                        </li>
-                    </ul> -->
-
                 </div>
             </nav>
-            <!-- Icons -->
-            <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-            <script>
-                feather.replace()
-            </script>
-            {% block body %}
-            {% endblock %}
-</body>
-<footer>
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://techbootcamps.utexas.edu/data/"> UT Data Analysis & Visualization Bootcamp</a>
+        </div>
     </div>
-    <!-- Copyright -->
-</footer>
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>feather.replace()</script>
+    {% block body %}
+    {% endblock %}
+    <footer class="page-footer font-small blue-grey lighten-5">
+        <div class="container-fluid">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p class="text-center">2020 Copyright:
+                <a href="https://techbootcamps.utexas.edu/data/"> UT Data Analysis & Visualization Bootcamp</a></p>
+        </div>
+    </footer>
+</body>
 
 </html>
