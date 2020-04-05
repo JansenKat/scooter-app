@@ -2,16 +2,18 @@
 let boxLayout = {
     title : "Trip Duration Boxplot",
     showlegend : false,
+    xaxis: {
+        title : "Weekday",
+        type : "category"
+    },
     yaxis: {
         title : "Trip Duration (s)",
         showgrid : true,
         type : "log"
     },
     plot_bgcolor:'rgba(0,0,0,0)',
-    paper_bgcolor:'rgba(0,0,0,0)',
-    xaxis_type : 'category'
+    paper_bgcolor:'rgba(0,0,0,0)'
 }
-
 
 //Function to define and gather the traces for whichever category
 function makeBoxPlot(category) {
@@ -37,7 +39,8 @@ function makeBoxPlot(category) {
 
         Plotly.newPlot("nowhereBox", traces, boxLayout)
 
-        distinct.forEach(function(item){
+        // distinct.forEach(function(item){
+        for(const item of distinct) {
 
             let trace = {
                     y: data.filter(element=>element[category]==item).map(element => element.trip_duration),
@@ -57,7 +60,7 @@ function makeBoxPlot(category) {
                     }
                 }
             Plotly.addTraces("nowhereBox", trace)
-        })
+        }
     })
     return traces
 }
