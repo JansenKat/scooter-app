@@ -8,7 +8,7 @@ def get_trips(db: Session, skip: int = 0, limit: int = 100):
 
 
 def get_random(db: Session, skip: int = 0, limit: int = 100):
-    res = db.execute()
+    res = db.execute("SELECT * FROM scooter_2020 ORDER BY RAND() LIMIT 1;")
     res_str = json.dumps([dict(r) for r in res])
     return json.loads(res_str)
 
