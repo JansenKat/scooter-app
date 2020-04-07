@@ -46,26 +46,11 @@ async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-# API Routes
-@app.get("/complaints_api")
-def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    complaints = crud.get_complaints(db, skip=skip, limit=limit)
-    return complaints
-
-
-@app.get("/complaints")
-def show_compliants(request: Request):
-    return templates.TemplateResponse("complaints.html", {"request": request})
-
-
-# @app.get("/scooter_trips", response_model=List[schemas.Trip])
-# def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-#    trips = crud.get_trips(db, skip=skip, limit=limit)
-#    return trips
+## start API and template routes
 
 
 @app.get("/random_api")
-def get_random(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_random(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     random = crud.get_random(db, skip=skip, limit=limit)
     return random
 
@@ -75,12 +60,15 @@ def show_random(request: Request):
     return templates.TemplateResponse("random.html", {"request": request})
 
 
-@app.get("/zipcode/{zipcode}")
-def zip_stats(zipcode, request: Request):
-    # % compaint, # rides in,m # rides out, max expense, min expense, avg, complaints, maps and other stats
-    return templates.TemplateResponse(
-        "zipcode.html", {"request": request, "zipcode": zipcode}
-    )
+@app.get("/zipcode_api")
+def read_zip_stats(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    zip_stats = crud.get_zip_stats(db, skip=skip, limit=limit)
+    return zip_stats
+
+
+@app.get("/zipcode")
+def show_zip_stats(request: Request):
+    return templates.TemplateResponse("zipcode.html", {"request": request})
 
 
 @app.get("/distance_api")
@@ -105,6 +93,17 @@ def show_duration(request: Request):
     return templates.TemplateResponse("long.html", {"request": request})
 
 
+@app.get("/redzone_api")
+def read_red_zone(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    red_zone = crud.get_red_zone(db, skip=skip, limit=limit)
+    return red_zone
+
+
+@app.get("/redzone")
+def show_red_zone(request: Request):
+    return templates.TemplateResponse("redzone.html", {"request": request})
+
+
 @app.get("/zero_distance_api")
 def read_zero_distance(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     zero_distance = crud.get_zero_distance(db, skip=skip, limit=limit)
@@ -116,7 +115,21 @@ def show_zero_distance(request: Request):
     return templates.TemplateResponse("nowhere.html", {"request": request})
 
 
-# DECIMAL VALUE BEING RETURNED, MUST BE CONVERTED FOR JSON SERIALIZATION
+## start API only routes
+
+
+@app.get("/complaints_api")
+def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    complaints = crud.get_complaints(db, skip=skip, limit=limit)
+    return complaints
+
+
+@app.get("/scooter_trips")
+def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    trips = crud.get_trips(db, skip=skip, limit=limit)
+    return trips
+
+
 @app.get("/zero_zip_code_api")
 def read_zero_zip_code(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     zero_zip_code = crud.get_zero_zip_code(db, skip=skip, limit=limit)
@@ -135,17 +148,10 @@ def read_zero_weekday(skip: int = 0, limit: int = 100, db: Session = Depends(get
     return zero_weekday
 
 
-# NEED TO CONVERT HOUR TO TEXT
 @app.get("/zero_hour_api")
 def read_zero_hour(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     zero_hour = crud.get_zero_hour(db, skip=skip, limit=limit)
     return zero_hour
-
-
-@app.get("/red_zone")
-def red_zone(request: Request):
-    #  red zone zip code (10 worst neighbor hoods to leave scooter in)
-    return templates.TemplateResponse("red-zone.html", {"request": request})
 
 
 # if __name__ == "__main__":

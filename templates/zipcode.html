@@ -14,27 +14,19 @@
     </div>
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <h2>Explore Data by Zipcode</h2>
         </div>
         <div class="row">
-            <p>Does your neighborhood have a scooter problem? Or a complainer problem? Explore the complaints from a
-                specific zip code by entering a zip code at the end of the URL. See the table that is generated to see
+            <p>Does your neighborhood have a scooter problem? Or a complainer problem? Explore the various metrics we
+                have gathered by a
+                specific zip code. See the table that is generated to see
                 if those squeaking wheels you hear are scooters or nagging neighbors.</p>
         </div>
         <div class="row">
-            <div class="well">
-                <h5>SELECT Zipcode:</h5>
-                <select id="selDataset" onchange="optionChanged(this.value)"></select>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                </div>
-                <div id="sample-metadata" class="panel-body"></div>
-            </div>
+            <div id="zipcodeDiv" style="width:2000px;height:1000px;"></div>
         </div>
-    </div>
 </main>
 
 <!-- Icons -->
@@ -44,13 +36,5 @@
 </script>
 
 <!-- Plots -->
-<!-- <script>
-    TESTER = document.getElementById('tester');
-    Plotly.newPlot(TESTER, [{
-        x: [1, 2, 3, 4, 5],
-        y: [1, 2, 4, 8, 16]
-    }], {
-        margin: { t: 0 }
-    });
-</script> -->
+<script src="./static/js/zipcode.js"></script>
 {% endblock %}
