@@ -39,7 +39,7 @@ Plotly.d3.json('/complaints_api', function (err, rows) {
       },
       style: 'dark',
       zoom: 10
-
+    
 
     },
     margin: {
@@ -51,7 +51,7 @@ Plotly.d3.json('/complaints_api', function (err, rows) {
     },
     paper_bgcolor: '#191A1A',
     plot_bgcolor: '#191A1A',
-    showlegend: true,
+    showlegend: false,
     annotations: [{
       x: 0,
       y: 0,
