@@ -3,6 +3,7 @@ from sqlalchemy.types import String
 
 from .database import Base
 
+
 class Complaint(Base):
     __tablename__ = "311_data"
 
@@ -31,27 +32,26 @@ class Complaint(Base):
     map_page = Column(String)
     map_tile = Column(String)
 
+
 class Trip(Base):
-    __tablename__ = "scooter_data"
+    __tablename__ = "scooter_2020"
 
     trip_id = Column(String, primary_key=True, index=True)
-    vehicle_id = Column(String)
-    vehicle_type = Column(String)
     trip_duration = Column(Float)
     trip_distance = Column(Float)
     start_time = Column(String)
     end_time = Column(String)
-    modified_date = Column(String)
-    council_dist_start = Column(String)
-    council_dist_end = Column(String)
-    year = Column(Integer)
-    census_tract_start = Column(String)
-    census_tract_end = Column(String)
-    
+    start_zip = Column(String)
+    end_zip = Column(String)
+    startLat = Column(Float)
+    endLat = Column(Float)
+    startLon = Column(Float)
+    endLon = Column(Float)
+
+
 class ZipCode(Base):
     __tablename__ = "tract_to_zip"
 
     census_tract = Column(String, primary_key=True, index=True)
     zip_code = Column(String)
     population = Column(Integer)
-
