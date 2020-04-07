@@ -2,10 +2,10 @@ const day_name = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 const month_name = ["January", "February","March","April","May","June","July","August","September","October","November","December"]
  
 const apiMap = {
-  'weekday' : "/zero_weekday_api",
-  'month_name' : "/zero_month_api",
-  'hour' : "/zero_hour_api",
-  'zip' : "/zero_zip_code_api"
+  'weekday' : "/zero_weekday_plot",
+  'month_name' : "/zero_month_plot",
+  'hour' : "/zero_hour_plot",
+  'zip' : "/zero_zip_code_plot"
 }
 
 let barLayout = {

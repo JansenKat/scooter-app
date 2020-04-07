@@ -20,7 +20,7 @@ function makeBoxPlot(category) {
 
     let traces = []
 
-    Plotly.d3.json('/zero_distance_api', data => {
+    Plotly.d3.json('/zero_distance_plot', data => {
 
         console.log(category + " box data retrieved")
         
@@ -59,7 +59,9 @@ function makeBoxPlot(category) {
                         color : 'rgb(8,81,156)'
                     }
                 }
-            Plotly.addTraces("nowhereBox", trace)
+            console.log(trace)
+            traces.push(trace)
+            Plotly.newPlot("nowhereBox", traces, boxLayout)
         }
     })
     return traces
