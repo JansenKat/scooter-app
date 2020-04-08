@@ -20,6 +20,7 @@ Plotly.d3.json('/random_api', function(err, rows){
     console.log("start long" + startLongitude);
     console.log("end long" + endLongitude);
 
+
     for ( var i = 0 ; i < count.length; i++ ) {
         var opacityValue = count[i]/getMaxOfArray(count);
         var startlong2 = startLongitude[i].slice(0, -2)
