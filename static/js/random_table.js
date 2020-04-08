@@ -23,14 +23,14 @@ Plotly.d3.json("/random_api", function (err, rows) {
             values: headerValues,
             align: "center",
             line: { width: 1, color: 'rgb(50, 50, 50)' },
-            fill: { color: ['rgb(0,191,255)'] },
+            fill: { color: ['007bff'] },
             font: { family: "Helvetica Neue", size: 12, color: "white" }
         },
         cells: {
             values: cellValues,
             align: ["center", "center"],
             line: { color: "black", width: 1 },
-            fill: { color: ['rgb(240,248,255)'] },
+            fill: { color: ['f8f8ff'] },
             font: { family: "Helvetica Neue", size: 12, color: ["black"] }
         }
     }]

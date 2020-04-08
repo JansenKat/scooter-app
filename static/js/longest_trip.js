@@ -81,10 +81,10 @@ function getData(dataset) {
               traces : makePlot('trip_duration')
           break;
           case "trip_distance":
-              traces : makeTraces('trip_distance')
+              traces : makePlot('trip_distance')
           break;
           default:
-              traces : makeTraces('trip_distance')
+              traces : makePlot('trip_distance')
           break;
       }
   }

@@ -124,6 +124,12 @@ def read_complaints(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
     return complaints
 
 
+@app.get("/scooter_trips")
+def read_trips(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    trips = crud.get_trips(db, skip=skip, limit=limit)
+    return trips
+
+
 @app.get("/zero_zip_code_api")
 def read_zero_zip_code(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     zero_zip_code = crud.get_zero_zip_code(db, skip=skip, limit=limit)
