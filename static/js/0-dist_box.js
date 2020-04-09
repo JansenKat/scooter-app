@@ -20,7 +20,7 @@ function makeBoxPlot(category) {
 
     let traces = []
 
-    Plotly.d3.json('/zero_distance_plot', data => {
+    Plotly.d3.json('/zero_distance_api', data => {
 
         console.log(category + " box data retrieved")
         
