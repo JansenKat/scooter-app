@@ -11,8 +11,6 @@ function init() {
 
 function getData(dataset) {
 
-    console.log("dataset changed "+dataset)
-
     barLayout.xaxis.title = titleCase(dataset)
     boxLayout.xaxis.title = titleCase(dataset)
 
