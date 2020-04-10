@@ -1,3 +1,5 @@
+
+
 {% extends "layout.html" %}
 {% block body %}
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -14,7 +16,7 @@
     </div>
 
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <h2> Areas with the most complaints in Austin, TX</h2>
         </div>
@@ -24,18 +26,26 @@
                 Zilker park. After we adjusted it to complaints per ride, we started to see some really interesting
                 trends, like neighborhoods with complaints on up to 30% of the scooter rides that end there.</p>
         </div>
+        <!-- <div class="row">
             <select id="box_dropdown" onchange="getData(this.value)">
                 <option value="weekday">Weekday</option>
                 <option value="zip">Zipcode</option>
                 <option value="month_name">Month</option>
                 <option value="hour">Hours</option>
             </select>
-
-        </div>
+        </div> -->
         <br>
         <!-- -------------- Insert a plot here --------------- -->
+        <!-- <div class="row">
+            <div id="complaintDiv" style="width:100%;height:100%;"></div>
+        </div>
         <div class="row">
             <div id="red-zoneDiv" style="width:100%;height:100%;"></div>
+        </div> -->
+        <!-- -------------- ------------------ --------------- -->
+        <!-- -------------- Insert a plot here --------------- -->
+        <div class="row">
+            <div id="red-zoneDiv2" style="width:100%;height:100%;"></div>
         </div>
         <!-- -------------- ------------------ --------------- -->
 
