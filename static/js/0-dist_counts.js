@@ -51,7 +51,6 @@ function makeBarPlot(category) {
         }
       }
     ]
-    console.log(trace)
 
     Plotly.newPlot("nowhereBar", trace, barLayout)
   })

@@ -23,7 +23,7 @@ Plotly.d3.json('/random_api', function(err, rows){
 
     for ( var i = 0 ; i < count.length; i++ ) {
         var opacityValue = count[i]/getMaxOfArray(count);
-        var startlong2 = startLongitude[i].slice(0, -2)
+        // var startlong2 = startLongitude[i].slice(0, -2)
         // console.log(startlong2)
         var result = {
             type: 'scattermapbox',

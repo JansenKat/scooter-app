@@ -1,27 +1,23 @@
 
 Plotly.d3.json('/redzone_api', function(data) {
-            console.log(data)
     let zip = []
     let complaint = []
     for ( var i = 0 ; i < data.length; i++ ) { 
       zip.push(`zip ${data[i].zip_code}`);
       complaint.push(data[i].complaint_count);
-    console.log(zip)
-    console.log(complaint)
     
 
+  
 
 
       let bar_data = {
         textsrc:{type:"string"}, 
         type:"bar",
         x: zip,
-        y: complaint,
+        y: complaint.sort(function(a, b){return b-a}),
         mode: 'markers',
-        // marker: {
-        //           color: , 
-        //           size: sample_values.map(d => d)
-        //         },
+
+    
         hovertext: complaint
 
       }

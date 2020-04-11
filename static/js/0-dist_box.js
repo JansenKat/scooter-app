@@ -46,21 +46,15 @@ function makeBoxPlot(category) {
                     y: data.filter(element=>element[category]==item).map(element => element.trip_duration),
                     type: "box",
                     name: item,
-                    boxpoints : 'suspectedoutliers',
                     marker : {
                         color : 'rgb(8,81,156)',
-                        outliercolor : 'rgba(219, 64, 82, 0.6)',
-                        line : {
-                            outliercolor : 'rgba(219, 64, 82, 0.6)',
-                            outlierwidth : 2
-                        }
                     },
                     line : {
                         color : 'rgb(8,81,156)'
                     }
                 }
-            Plotly.addTraces("nowhereBox", trace)
+            traces.push(trace)
+            Plotly.newPlot("nowhereBox", traces, boxLayout)
         }
     })
-    return traces
 }

@@ -13,7 +13,6 @@ from .database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
 
 import datetime as dt
-import numpy as np
 import random
 
 models.Base.metadata.create_all(bind=engine)
